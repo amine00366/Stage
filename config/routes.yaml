@@ -1,0 +1,38 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+
+index:
+    path: /admin
+    controller: App\Controller\PagesController::index
+
+    
+
+tableau:
+    path: /aa
+    controller: App\Controller\PagesController::listarmoire
+
+
+
+editArmoire:
+    path: /editArmoire/{id}
+    controller: App\Controller\PagesController::editArmoire 
+    methods: [GET, POST]
+    
+
+
+ajoutArmoire:
+    path: /addArmoire
+    controller: App\Controller\PagesController::new
+
+
+deleteArmoire:
+    path: /deleteArmoire/{id}
+    controller: App\Controller\PagesController::deleteArmoire
+    
+
+
+
+
+
