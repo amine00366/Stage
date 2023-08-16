@@ -35,6 +35,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="{{asset('backend/assets/css/material-dashboard.css?v=3.1.0')}}" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
@@ -67,15 +68,15 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
-            <span class="nav-link-text ms-1">Tables</span>
+            <span class="nav-link-text ms-1">Table des Armoires</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/billing.html">
+          <a class="nav-link text-white " href="{{ path('tableau') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
-            <span class="nav-link-text ms-1">Billing</span>
+            <span class="nav-link-text ms-1">Tables des Bandes</span>
           </a>
         </li>
         
@@ -253,7 +254,7 @@
         </div>
       </div>
     </nav>
-    
+     
     {% block Body %}
     <!-- End Navbar -->
 
@@ -735,7 +736,21 @@
           </div>
         </div>
       </div>
-#}
+#}<div class="modal fade" id="ajouterModal" tabindex="-1" aria-labelledby="ajouterModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ajouterModalLabel">Ajouter une bande</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% block modal_content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
 
     {% endblock %}
 
@@ -861,6 +876,19 @@
   <script src={{asset("backend/assets/js/plugins/perfect-scrollbar.min.js")}}></script>
   <script src={{asset("backend/assets/js/plugins/smooth-scrollbar.min.js")}}></script>
   <script src={{asset("backend/assets/js/plugins/chartjs.min.js")}}></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.body.addEventListener('click', function (event) {
+            if (event.target && event.target.id === 'ouvrirModal') {
+                $('#ajouterModal').modal('show');
+            }
+        });
+    });
+</script>
+
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 

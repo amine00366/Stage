@@ -112,15 +112,10 @@ class __TwigTemplate_4f62b9444949eb414b3516b6931344c3 extends Template
             // line 39
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["a"], "description", [], "any", false, false, false, 39), "html", null, true);
             echo "</p>
-                        ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['a'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 40
-        echo " 
-                        <p class=\"text-xs text-secondary mb-0\">Organization</p>
+                    
+                       
                       </td>
+                        
                       <td class=\"align-middle text-center text-sm\">
                         <span class=\"badge badge-sm bg-gradient-success\">Online</span>
                       </td>
@@ -133,6 +128,13 @@ class __TwigTemplate_4f62b9444949eb414b3516b6931344c3 extends Template
                         </a>
                       </td>
                     </tr>
+                      ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['a'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 56
+        echo " 
                     <tr>
                       <td>
                         <div class=\"d-flex px-2 py-1\">
@@ -560,7 +562,7 @@ class __TwigTemplate_4f62b9444949eb414b3516b6931344c3 extends Template
 
     public function getDebugInfo()
     {
-        return array (  121 => 40,  113 => 39,  105 => 34,  96 => 27,  92 => 26,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  137 => 56,  113 => 39,  105 => 34,  96 => 27,  92 => 26,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -604,9 +606,10 @@ class __TwigTemplate_4f62b9444949eb414b3516b6931344c3 extends Template
                       </td>
                       <td>
                         <p class=\"text-xs font-weight-bold mb-0\">{{a.description}}</p>
-                        {% endfor %} 
-                        <p class=\"text-xs text-secondary mb-0\">Organization</p>
+                    
+                       
                       </td>
+                        
                       <td class=\"align-middle text-center text-sm\">
                         <span class=\"badge badge-sm bg-gradient-success\">Online</span>
                       </td>
@@ -619,6 +622,7 @@ class __TwigTemplate_4f62b9444949eb414b3516b6931344c3 extends Template
                         </a>
                       </td>
                     </tr>
+                      {% endfor %} 
                     <tr>
                       <td>
                         <div class=\"d-flex px-2 py-1\">

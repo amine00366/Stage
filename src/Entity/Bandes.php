@@ -33,7 +33,7 @@ class Bandes
     private ?string $pool = null;
 
     #[ORM\ManyToOne(inversedBy: 'bandes')]
-    private ?armoire $arm = null;
+    private ?Armoire $arm = null;
 
     public function getId(): ?int
     {
@@ -112,12 +112,12 @@ class Bandes
         return $this;
     }
 
-    public function getArm(): ?armoire
+    public function getArm(): ?Armoire
     {
         return $this->arm;
     }
 
-    public function setArm(?armoire $arm): static
+    public function setArm(?Armoire $arm): static
     {
         $this->arm = $arm;
 

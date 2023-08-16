@@ -29,6 +29,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         $this->blocks = [
             'stylesheets' => [$this, 'block_stylesheets'],
             'Body' => [$this, 'block_Body'],
+            'modal_content' => [$this, 'block_modal_content'],
             'footer' => [$this, 'block_footer'],
             'js' => [$this, 'block_js'],
         ];
@@ -72,7 +73,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
   ";
         // line 26
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 42
+        // line 43
         echo "</head>
 
 <body class=\"g-sidenav-show  bg-gray-200\">
@@ -101,15 +102,18 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
               <i class=\"material-icons opacity-10\">table_view</i>
             </div>
-            <span class=\"nav-link-text ms-1\">Tables</span>
+            <span class=\"nav-link-text ms-1\">Table des Armoires</span>
           </a>
         </li>
         <li class=\"nav-item\">
-          <a class=\"nav-link text-white \" href=\"../pages/billing.html\">
+          <a class=\"nav-link text-white \" href=\"";
+        // line 75
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("tableau");
+        echo "\">
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
               <i class=\"material-icons opacity-10\">receipt_long</i>
             </div>
-            <span class=\"nav-link-text ms-1\">Billing</span>
+            <span class=\"nav-link-text ms-1\">Tables des Bandes</span>
           </a>
         </li>
         
@@ -186,11 +190,11 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
           <ul class=\"navbar-nav  justify-content-end\">
             <li class=\"nav-item d-flex align-items-center\">
             ";
-        // line 155
+        // line 156
         echo "            </li>
             <li class=\"mt-2\">
               ";
-        // line 158
+        // line 159
         echo "            </li>
             <li class=\"nav-item d-xl-none ps-3 d-flex align-items-center\">
               <a href=\"javascript:;\" class=\"nav-link text-body p-0\" id=\"iconNavbarSidenav\">
@@ -280,22 +284,22 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
               </ul>
             </li>
             ";
-        // line 252
+        // line 253
         echo "          </ul>
         </div>
       </div>
     </nav>
-    
+     
     ";
-        // line 257
+        // line 258
         $this->displayBlock('Body', $context, $blocks);
-        // line 741
+        // line 756
         echo "
 
       ";
-        // line 743
+        // line 758
         $this->displayBlock('footer', $context, $blocks);
-        // line 779
+        // line 794
         echo "    </div>
    
   </main>
@@ -376,9 +380,9 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
   <!--   Core JS Files   -->
 
    ";
-        // line 858
+        // line 873
         $this->displayBlock('js', $context, $blocks);
-        // line 1125
+        // line 1153
         echo "
 </body>
 
@@ -422,6 +426,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         // line 37
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/css/material-dashboard.css?v=3.1.0"), "html", null, true);
         echo "\" rel=\"stylesheet\" />
+  <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site=\"YOUR_DOMAIN_HERE\" src=\"https://api.nepcha.com/js/nepcha-analytics.js\"></script>
@@ -434,7 +439,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     }
 
-    // line 257
+    // line 258
     public function block_Body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -444,12 +449,30 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "Body"));
 
-        // line 258
+        // line 259
         echo "    <!-- End Navbar -->
 
     ";
         // line 739
-        echo "
+        echo "<div class=\"modal fade\" id=\"ajouterModal\" tabindex=\"-1\" aria-labelledby=\"ajouterModalLabel\" aria-hidden=\"true\">
+        <div class=\"modal-dialog\">
+            <div class=\"modal-content\">
+                <div class=\"modal-header\">
+                    <h5 class=\"modal-title\" id=\"ajouterModalLabel\">Ajouter une bande</h5>
+                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                        <span aria-hidden=\"true\">&times;</span>
+                    </button>
+                </div>
+                <div class=\"modal-body\">
+                    ";
+        // line 749
+        $this->displayBlock('modal_content', $context, $blocks);
+        // line 750
+        echo "                </div>
+            </div>
+        </div>
+    </div>
+
     ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -459,7 +482,25 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     }
 
-    // line 743
+    // line 749
+    public function block_modal_content($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "modal_content"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "modal_content"));
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 758
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -469,7 +510,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 744
+        // line 759
         echo "      <footer class=\"footer py-4  \">
       <center>
         <div class=\"container-fluid\">
@@ -485,7 +526,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
               </div>
             </div>
             ";
-        // line 774
+        // line 789
         echo "          </div>
         </div>
         </center> 
@@ -499,7 +540,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     }
 
-    // line 858
+    // line 873
     public function block_js($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -509,26 +550,39 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
-        // line 859
+        // line 874
         echo "  <script src=";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/core/popper.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 860
+        // line 875
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/core/bootstrap.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 861
+        // line 876
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/plugins/perfect-scrollbar.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 862
+        // line 877
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/plugins/smooth-scrollbar.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 863
+        // line 878
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/plugins/chartjs.min.js"), "html", null, true);
         echo "></script>
+   <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>
+    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.body.addEventListener('click', function (event) {
+            if (event.target && event.target.id === 'ouvrirModal') {
+                \$('#ajouterModal').modal('show');
+            }
+        });
+    });
+</script>
+
   <script>
     var ctx = document.getElementById(\"chart-bars\").getContext(\"2d\");
 
@@ -803,9 +857,14 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         return "admin.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  530 => 863,  526 => 862,  522 => 861,  518 => 860,  513 => 859,  503 => 858,  489 => 774,  473 => 744,  463 => 743,  452 => 739,  448 => 258,  438 => 257,  423 => 37,  414 => 31,  410 => 30,  405 => 27,  395 => 26,  382 => 1125,  380 => 858,  299 => 779,  297 => 743,  293 => 741,  291 => 257,  284 => 252,  194 => 158,  190 => 155,  76 => 42,  74 => 26,  47 => 1,);
+        return array (  571 => 878,  567 => 877,  563 => 876,  559 => 875,  554 => 874,  544 => 873,  530 => 789,  514 => 759,  504 => 758,  486 => 749,  471 => 750,  469 => 749,  457 => 739,  453 => 259,  443 => 258,  427 => 37,  418 => 31,  414 => 30,  409 => 27,  399 => 26,  386 => 1153,  384 => 873,  303 => 794,  301 => 758,  297 => 756,  295 => 258,  288 => 253,  198 => 159,  194 => 156,  111 => 75,  77 => 43,  75 => 26,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -847,6 +906,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
   <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons+Round\" rel=\"stylesheet\">
   <!-- CSS Files -->
   <link id=\"pagestyle\" href=\"{{asset('backend/assets/css/material-dashboard.css?v=3.1.0')}}\" rel=\"stylesheet\" />
+  <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site=\"YOUR_DOMAIN_HERE\" src=\"https://api.nepcha.com/js/nepcha-analytics.js\"></script>
@@ -879,15 +939,15 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
               <i class=\"material-icons opacity-10\">table_view</i>
             </div>
-            <span class=\"nav-link-text ms-1\">Tables</span>
+            <span class=\"nav-link-text ms-1\">Table des Armoires</span>
           </a>
         </li>
         <li class=\"nav-item\">
-          <a class=\"nav-link text-white \" href=\"../pages/billing.html\">
+          <a class=\"nav-link text-white \" href=\"{{ path('tableau') }}\">
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
               <i class=\"material-icons opacity-10\">receipt_long</i>
             </div>
-            <span class=\"nav-link-text ms-1\">Billing</span>
+            <span class=\"nav-link-text ms-1\">Tables des Bandes</span>
           </a>
         </li>
         
@@ -1065,7 +1125,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         </div>
       </div>
     </nav>
-    
+     
     {% block Body %}
     <!-- End Navbar -->
 
@@ -1547,7 +1607,21 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
           </div>
         </div>
       </div>
-#}
+#}<div class=\"modal fade\" id=\"ajouterModal\" tabindex=\"-1\" aria-labelledby=\"ajouterModalLabel\" aria-hidden=\"true\">
+        <div class=\"modal-dialog\">
+            <div class=\"modal-content\">
+                <div class=\"modal-header\">
+                    <h5 class=\"modal-title\" id=\"ajouterModalLabel\">Ajouter une bande</h5>
+                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                        <span aria-hidden=\"true\">&times;</span>
+                    </button>
+                </div>
+                <div class=\"modal-body\">
+                    {% block modal_content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
 
     {% endblock %}
 
@@ -1673,6 +1747,19 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
   <script src={{asset(\"backend/assets/js/plugins/perfect-scrollbar.min.js\")}}></script>
   <script src={{asset(\"backend/assets/js/plugins/smooth-scrollbar.min.js\")}}></script>
   <script src={{asset(\"backend/assets/js/plugins/chartjs.min.js\")}}></script>
+   <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>
+    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.body.addEventListener('click', function (event) {
+            if (event.target && event.target.id === 'ouvrirModal') {
+                \$('#ajouterModal').modal('show');
+            }
+        });
+    });
+</script>
+
   <script>
     var ctx = document.getElementById(\"chart-bars\").getContext(\"2d\");
 

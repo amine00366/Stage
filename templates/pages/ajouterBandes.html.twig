@@ -1,0 +1,31 @@
+{# templates/bandes/ajouter.html.twig #}
+
+{% extends 'admin.html.twig' %}
+
+{% block title %}Ajouter une bande{% endblock %}
+
+{% block Body %}
+    <h1>Liste des bandes</h1>
+
+    <a href="#" data-toggle="modal" data-target="#ajouterModal" class="btn btn-gd btn-outline-info">Ajouter une bande</a>
+
+    <!-- Modal pour ajouter une bande -->
+    <div class="modal fade" id="ajouterModal" tabindex="-1" aria-labelledby="ajouterModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ajouterModalLabel">Ajouter une bande</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

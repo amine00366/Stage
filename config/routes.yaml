@@ -2,6 +2,22 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
+Login:
+    path: /login
+    controller: App\Controller\PagesController::login 
+    methods: [GET, POST]
+
+AddBandes:
+    path: /addBandes
+    controller: App\Controller\PagesController::ajouterBande 
+    methods: [GET, POST]
+
+
+listBandes:
+    path: /listBandes
+    controller: App\Controller\PagesController::listBandes 
+    methods: [GET, POST]
+
 
 index:
     path: /admin
@@ -33,6 +49,13 @@ deleteArmoire:
     
 
 
+deleteBande:
+    path: /deleteBande/{id}
+    controller: App\Controller\PagesController::deleteBande
 
 
-
+editBande:
+    path: /editBande/{id}
+    controller: App\Controller\PagesController::editBande 
+    methods: [GET, POST]
+    

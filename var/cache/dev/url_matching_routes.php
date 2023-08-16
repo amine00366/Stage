@@ -13,6 +13,9 @@ return [
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
+        '/login' => [[['_route' => 'Login', '_controller' => 'App\\Controller\\PagesController::login'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/addBandes' => [[['_route' => 'AddBandes', '_controller' => 'App\\Controller\\PagesController::ajouterBande'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/listBandes' => [[['_route' => 'listBandes', '_controller' => 'App\\Controller\\PagesController::listBandes'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/admin' => [[['_route' => 'index', '_controller' => 'App\\Controller\\PagesController::index'], null, null, null, false, false, null]],
         '/aa' => [[['_route' => 'tableau', '_controller' => 'App\\Controller\\PagesController::listarmoire'], null, null, null, false, false, null]],
         '/addArmoire' => [[['_route' => 'ajoutArmoire', '_controller' => 'App\\Controller\\PagesController::new'], null, null, null, false, false, null]],
@@ -34,8 +37,14 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/editArmoire/([^/]++)(*:190)'
-                .'|/deleteArmoire/([^/]++)(*:221)'
+                .'|/edit(?'
+                    .'|Armoire/([^/]++)(*:193)'
+                    .'|Bande/([^/]++)(*:215)'
+                .')'
+                .'|/delete(?'
+                    .'|Armoire/([^/]++)(*:250)'
+                    .'|Bande/([^/]++)(*:272)'
+                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -46,9 +55,11 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        190 => [[['_route' => 'editArmoire', '_controller' => 'App\\Controller\\PagesController::editArmoire'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
-        221 => [
-            [['_route' => 'deleteArmoire', '_controller' => 'App\\Controller\\PagesController::deleteArmoire'], ['id'], null, null, false, true, null],
+        193 => [[['_route' => 'editArmoire', '_controller' => 'App\\Controller\\PagesController::editArmoire'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        215 => [[['_route' => 'editBande', '_controller' => 'App\\Controller\\PagesController::editBande'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        250 => [[['_route' => 'deleteArmoire', '_controller' => 'App\\Controller\\PagesController::deleteArmoire'], ['id'], null, null, false, true, null]],
+        272 => [
+            [['_route' => 'deleteBande', '_controller' => 'App\\Controller\\PagesController::deleteBande'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

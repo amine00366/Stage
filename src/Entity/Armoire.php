@@ -87,4 +87,8 @@ class Armoire
 
         return $this;
     }
+    public function __toString(): string
+{
+    return $this->nom; // Remplacez 'nom' par la propriété appropriée
+}
 }

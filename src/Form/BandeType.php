@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Armoire;
 use App\Entity\Bandes;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,38 +25,37 @@ class BandeType extends AbstractType
         $builder
             ->add('numbande')
             ->add('Label')
-            ->add('datedebut', DateTimeType::class, [
+            ->add('datedebut', DateType::class, [
                 'label' => 'Choisissez votre date de début ',
-                'required' => true ,
-                'data' => new \DateTime(),
-                'widget' => 'single_text',
+                'data' => (new \DateTime()),
+                
                 
                 'constraints' => [
                     new GreaterThanOrEqual([
-                        'value' => 'today',
-                        'message' => 'La date et l\'heure doivent être supérieures ou égales à la date actuelle.',
+                        'value' =>new \DateTime(),
+                        
                     ]),
                 ],
                 'attr' => [
-                    'min' => (new \DateTime())->format('Y-m-d\TH:i'),
+                    'min' => (new \DateTime())->format('Y-m-d'),
                     'class' => 'form-control datetimepicker-input',
                 ],
                
             ])
-            ->add('datefin', DateTimeType::class, [
-                'label' => 'Choisissez votre date de début ',
-                'required' => true ,
+            ->add('datefin', DateType::class, [
+                'label' => 'Choisissez votre date de fin ',
+
                 'data' => new \DateTime(),
-                'widget' => 'single_text',
+               
                 
                 'constraints' => [
                     new GreaterThanOrEqual([
                         'value' => 'today',
-                        'message' => 'La date et l\'heure doivent être supérieures ou égales à la date actuelle.',
+                       
                     ]),
                 ],
                 'attr' => [
-                    'min' => (new \DateTime())->format('Y-m-d\TH:i'),
+                    'min' => (new \DateTime())->format('Y-m-d'),
                     'class' => 'form-control datetimepicker-input',
                 ],
                
@@ -67,7 +68,7 @@ class BandeType extends AbstractType
             ->add('arm',EntityType::class, [
                 'placeholder' => '',
                 'class' => Armoire::class,
-                'choice_label' => 'nomtype',
+                'choice_label' => 'nom',
                 'label' => 'Choisissez une armoire',
                 'required' => true ,
                 'attr' => [
