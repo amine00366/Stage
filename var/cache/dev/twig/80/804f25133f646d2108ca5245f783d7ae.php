@@ -102,12 +102,21 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
               <i class=\"material-icons opacity-10\">table_view</i>
             </div>
-            <span class=\"nav-link-text ms-1\">Table des Armoires</span>
+            ";
+        // line 71
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+            // line 72
+            echo "      <span class=\"nav-link-text ms-1\">Table des Armoires</span>
+";
+        }
+        // line 74
+        echo "
+          
           </a>
         </li>
         <li class=\"nav-item\">
           <a class=\"nav-link text-white \" href=\"";
-        // line 75
+        // line 79
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("tableau");
         echo "\">
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
@@ -165,7 +174,10 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
     <div class=\"sidenav-footer position-absolute w-100 bottom-0 \">
       <div class=\"mx-3\">
       <!-- lezem n7ot feha bouton sign out !--> 
-        <a class=\"btn bg-gradient-primary w-100\" href=\"https://www.creative-tim.com/product/material-dashboard-pro?ref=sidebarfree\" type=\"button\">Sign out </a>
+        <a class=\"btn bg-gradient-primary w-100\" href=\"";
+        // line 135
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
+        echo "\" type=\"button\">Sign out </a>
       </div>
     </div>
   </aside>
@@ -190,11 +202,11 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
           <ul class=\"navbar-nav  justify-content-end\">
             <li class=\"nav-item d-flex align-items-center\">
             ";
-        // line 156
+        // line 160
         echo "            </li>
             <li class=\"mt-2\">
               ";
-        // line 159
+        // line 163
         echo "            </li>
             <li class=\"nav-item d-xl-none ps-3 d-flex align-items-center\">
               <a href=\"javascript:;\" class=\"nav-link text-body p-0\" id=\"iconNavbarSidenav\">
@@ -233,73 +245,27 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
                     </div>
                   </a>
                 </li>
-                <li class=\"mb-2\">
-                  <a class=\"dropdown-item border-radius-md\" href=\"javascript:;\">
-                    <div class=\"d-flex py-1\">
-                      <div class=\"my-auto\">
-                        <img src=\"../assets/img/small-logos/logo-spotify.svg\" class=\"avatar avatar-sm bg-gradient-dark  me-3 \">
-                      </div>
-                      <div class=\"d-flex flex-column justify-content-center\">
-                        <h6 class=\"text-sm font-weight-normal mb-1\">
-                          <span class=\"font-weight-bold\">New album</span> by Travis Scott
-                        </h6>
-                        <p class=\"text-xs text-secondary mb-0\">
-                          <i class=\"fa fa-clock me-1\"></i>
-                          1 day
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class=\"dropdown-item border-radius-md\" href=\"javascript:;\">
-                    <div class=\"d-flex py-1\">
-                      <div class=\"avatar avatar-sm bg-gradient-secondary  me-3  my-auto\">
-                        <svg width=\"12px\" height=\"12px\" viewBox=\"0 0 43 36\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">
-                          <title>credit-card</title>
-                          <g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">
-                            <g transform=\"translate(-2169.000000, -745.000000)\" fill=\"#FFFFFF\" fill-rule=\"nonzero\">
-                              <g transform=\"translate(1716.000000, 291.000000)\">
-                                <g transform=\"translate(453.000000, 454.000000)\">
-                                  <path class=\"color-background\" d=\"M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z\" opacity=\"0.593633743\"></path>
-                                  <path class=\"color-background\" d=\"M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z\"></path>
-                                </g>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <div class=\"d-flex flex-column justify-content-center\">
-                        <h6 class=\"text-sm font-weight-normal mb-1\">
-                          Payment successfully completed
-                        </h6>
-                        <p class=\"text-xs text-secondary mb-0\">
-                          <i class=\"fa fa-clock me-1\"></i>
-                          2 days
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
+              
+                
               </ul>
             </li>
             ";
-        // line 253
+        // line 211
         echo "          </ul>
         </div>
       </div>
     </nav>
      
     ";
-        // line 258
+        // line 216
         $this->displayBlock('Body', $context, $blocks);
-        // line 756
+        // line 714
         echo "
 
       ";
-        // line 758
+        // line 716
         $this->displayBlock('footer', $context, $blocks);
-        // line 794
+        // line 752
         echo "    </div>
    
   </main>
@@ -380,9 +346,9 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
   <!--   Core JS Files   -->
 
    ";
-        // line 873
+        // line 831
         $this->displayBlock('js', $context, $blocks);
-        // line 1153
+        // line 1111
         echo "
 </body>
 
@@ -439,7 +405,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     }
 
-    // line 258
+    // line 216
     public function block_Body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -449,11 +415,11 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "Body"));
 
-        // line 259
+        // line 217
         echo "    <!-- End Navbar -->
 
     ";
-        // line 739
+        // line 697
         echo "<div class=\"modal fade\" id=\"ajouterModal\" tabindex=\"-1\" aria-labelledby=\"ajouterModalLabel\" aria-hidden=\"true\">
         <div class=\"modal-dialog\">
             <div class=\"modal-content\">
@@ -465,9 +431,9 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
                 </div>
                 <div class=\"modal-body\">
                     ";
-        // line 749
+        // line 707
         $this->displayBlock('modal_content', $context, $blocks);
-        // line 750
+        // line 708
         echo "                </div>
             </div>
         </div>
@@ -482,7 +448,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     }
 
-    // line 749
+    // line 707
     public function block_modal_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -500,7 +466,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     }
 
-    // line 758
+    // line 716
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -510,7 +476,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 759
+        // line 717
         echo "      <footer class=\"footer py-4  \">
       <center>
         <div class=\"container-fluid\">
@@ -526,7 +492,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
               </div>
             </div>
             ";
-        // line 789
+        // line 747
         echo "          </div>
         </div>
         </center> 
@@ -540,7 +506,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     }
 
-    // line 873
+    // line 831
     public function block_js($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -550,24 +516,24 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
-        // line 874
+        // line 832
         echo "  <script src=";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/core/popper.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 875
+        // line 833
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/core/bootstrap.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 876
+        // line 834
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/plugins/perfect-scrollbar.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 877
+        // line 835
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/plugins/smooth-scrollbar.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 878
+        // line 836
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/plugins/chartjs.min.js"), "html", null, true);
         echo "></script>
    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>
@@ -864,7 +830,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     public function getDebugInfo()
     {
-        return array (  571 => 878,  567 => 877,  563 => 876,  559 => 875,  554 => 874,  544 => 873,  530 => 789,  514 => 759,  504 => 758,  486 => 749,  471 => 750,  469 => 749,  457 => 739,  453 => 259,  443 => 258,  427 => 37,  418 => 31,  414 => 30,  409 => 27,  399 => 26,  386 => 1153,  384 => 873,  303 => 794,  301 => 758,  297 => 756,  295 => 258,  288 => 253,  198 => 159,  194 => 156,  111 => 75,  77 => 43,  75 => 26,  48 => 1,);
+        return array (  537 => 836,  533 => 835,  529 => 834,  525 => 833,  520 => 832,  510 => 831,  496 => 747,  480 => 717,  470 => 716,  452 => 707,  437 => 708,  435 => 707,  423 => 697,  419 => 217,  409 => 216,  393 => 37,  384 => 31,  380 => 30,  375 => 27,  365 => 26,  352 => 1111,  350 => 831,  269 => 752,  267 => 716,  263 => 714,  261 => 216,  254 => 211,  210 => 163,  206 => 160,  179 => 135,  120 => 79,  113 => 74,  109 => 72,  107 => 71,  77 => 43,  75 => 26,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -939,7 +905,11 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
               <i class=\"material-icons opacity-10\">table_view</i>
             </div>
-            <span class=\"nav-link-text ms-1\">Table des Armoires</span>
+            {% if is_granted('ROLE_ADMIN') %}
+      <span class=\"nav-link-text ms-1\">Table des Armoires</span>
+{% endif %}
+
+          
           </a>
         </li>
         <li class=\"nav-item\">
@@ -999,7 +969,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
     <div class=\"sidenav-footer position-absolute w-100 bottom-0 \">
       <div class=\"mx-3\">
       <!-- lezem n7ot feha bouton sign out !--> 
-        <a class=\"btn bg-gradient-primary w-100\" href=\"https://www.creative-tim.com/product/material-dashboard-pro?ref=sidebarfree\" type=\"button\">Sign out </a>
+        <a class=\"btn bg-gradient-primary w-100\" href=\"{{path('app_logout')}}\" type=\"button\">Sign out </a>
       </div>
     </div>
   </aside>
@@ -1065,54 +1035,8 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
                     </div>
                   </a>
                 </li>
-                <li class=\"mb-2\">
-                  <a class=\"dropdown-item border-radius-md\" href=\"javascript:;\">
-                    <div class=\"d-flex py-1\">
-                      <div class=\"my-auto\">
-                        <img src=\"../assets/img/small-logos/logo-spotify.svg\" class=\"avatar avatar-sm bg-gradient-dark  me-3 \">
-                      </div>
-                      <div class=\"d-flex flex-column justify-content-center\">
-                        <h6 class=\"text-sm font-weight-normal mb-1\">
-                          <span class=\"font-weight-bold\">New album</span> by Travis Scott
-                        </h6>
-                        <p class=\"text-xs text-secondary mb-0\">
-                          <i class=\"fa fa-clock me-1\"></i>
-                          1 day
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class=\"dropdown-item border-radius-md\" href=\"javascript:;\">
-                    <div class=\"d-flex py-1\">
-                      <div class=\"avatar avatar-sm bg-gradient-secondary  me-3  my-auto\">
-                        <svg width=\"12px\" height=\"12px\" viewBox=\"0 0 43 36\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">
-                          <title>credit-card</title>
-                          <g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">
-                            <g transform=\"translate(-2169.000000, -745.000000)\" fill=\"#FFFFFF\" fill-rule=\"nonzero\">
-                              <g transform=\"translate(1716.000000, 291.000000)\">
-                                <g transform=\"translate(453.000000, 454.000000)\">
-                                  <path class=\"color-background\" d=\"M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z\" opacity=\"0.593633743\"></path>
-                                  <path class=\"color-background\" d=\"M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z\"></path>
-                                </g>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <div class=\"d-flex flex-column justify-content-center\">
-                        <h6 class=\"text-sm font-weight-normal mb-1\">
-                          Payment successfully completed
-                        </h6>
-                        <p class=\"text-xs text-secondary mb-0\">
-                          <i class=\"fa fa-clock me-1\"></i>
-                          2 days
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
+              
+                
               </ul>
             </li>
             {# <li class=\"nav-item d-flex align-items-center\">

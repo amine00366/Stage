@@ -2,9 +2,26 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-Login:
+app_login:
     path: /login
-    controller: App\Controller\PagesController::login 
+    controller: App\Controller\SecurityController::login 
+    methods: [GET, POST]
+
+
+logintemplate:
+    path: /logintemp
+    controller: App\Controller\PagesController::logintemp
+    methods: [GET, POST]
+
+register:
+    path: /register
+    controller: App\Controller\RegistrationController::register
+    methods: [GET, POST]
+
+
+app_logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout 
     methods: [GET, POST]
 
 AddBandes:

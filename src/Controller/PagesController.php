@@ -70,9 +70,9 @@ class PagesController extends AbstractController
     }
 
   
-    public function dash(): Response
+    public function logintemp(): Response
     {
-        return $this->render('admin/dashboard.html.twig');
+        return $this->render('pages/login.html.twig');
     }
 
 
@@ -110,7 +110,7 @@ class PagesController extends AbstractController
         return $this->redirectToRoute('tableau');
     }
 
-    public function login(): Response
+    public function logintest(): Response
     {  return $this->render('pages/login.html.twig');
     }
      
