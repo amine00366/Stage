@@ -61,6 +61,7 @@ class PagesController extends AbstractController
             
         
     }
+    
 
     ///// njareb ///////////
     public function aa(): Response
@@ -68,6 +69,8 @@ class PagesController extends AbstractController
         
         return $this->render('pages/profile.html.twig');
     }
+   
+
 
   
     public function logintemp(): Response
@@ -110,6 +113,51 @@ class PagesController extends AbstractController
         return $this->redirectToRoute('tableau');
     }
 
+
+    // public function searchBande(Request $request, BandesRepository $bandeRepository)
+    // {
+    //     $searchTerm = $request->query->get('search');
+        
+    //     if ($searchTerm) {
+    //         $bandes = $bandeRepository->searchTerm($searchTerm);
+    //     } else {
+    //         $bandes = $bandeRepository->findAll();
+    //     }
+        
+    //     return $this->render('pages/Bandes.html.twig', [
+    //         'Bandes' => $bandes,
+    //     ]);
+    // }
+
+    public function searchBande(BandesRepository $bandeRepository, Request $request)
+    {
+        $searchTerm = $request->query->get('search');
+        
+        if ($searchTerm) {
+            $bandes = $bandeRepository->searchTerm($searchTerm);
+        } else {
+            $bandes = $bandeRepository->findAll();
+        }
+        
+        $bande = new Bandes();
+        $form = $this->createForm(BandeType::class, $bande);
+        $form->handleRequest($request);
+    
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($bande);
+            $entityManager->flush();
+    
+            $this->addFlash('success', 'La bande a été ajoutée avec succès.');
+    
+            return $this->redirectToRoute('tableau'); // Redirige où vous voulez
+        }
+    
+        return $this->render('pages/Bandes.html.twig', [
+            'Bandes' => $bandes,
+            'form' => $form->createView(),
+        ]);
+    }
     public function logintest(): Response
     {  return $this->render('pages/login.html.twig');
     }

@@ -10,7 +10,11 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {   
 
-  
+    public function signup(): Response
+    {
+        
+        return $this->render('registration/signup.html.twig');
+    }
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // if ($this->getUser()) {

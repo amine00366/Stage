@@ -45,4 +45,12 @@ class BandesRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function searchTerm($terms)
+{
+    return $this->createQueryBuilder('b')
+        ->andWhere('b.numbande LIKE :terms OR b.Label LIKE :terms OR b.datedebut LIKE :terms OR b.datefin LIKE :terms OR b.dureederetension LIKE :terms OR b.pool LIKE :terms')
+        ->setParameter('terms', '%' . $terms . '%')
+        ->getQuery()
+        ->getResult();
+}
 }

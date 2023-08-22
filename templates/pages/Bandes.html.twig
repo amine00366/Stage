@@ -28,6 +28,12 @@
     <a href="#" data-toggle="modal" data-target="#ajouterModal" class="btn btn-gd btn-outline-info">Ajouter une bande</a>
 <button type="button" class="btn btn-gd btn-outline-info" id="ouvrirModal">Ajouter</button>
 
+<form action="{{ path('searchBande') }}" method="GET">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" name="search" placeholder="Rechercher">
+        <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
+    </div>
+</form>
 
        <a href="{{ path('AddBandes') }}"><button type="button" class="btn btn-gd btn-outline-info">ajouter </button></a>
      <div class="col-12">

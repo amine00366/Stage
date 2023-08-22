@@ -7,10 +7,20 @@ app_login:
     controller: App\Controller\SecurityController::login 
     methods: [GET, POST]
 
+signup:
+    path: /signup
+    controller: App\Controller\SecurityController::signup 
+    methods: [GET, POST]
+
 
 logintemplate:
     path: /logintemp
     controller: App\Controller\PagesController::logintemp
+    methods: [GET, POST]
+
+searchBande:
+    path: /searchBande
+    controller: App\Controller\PagesController::searchBande
     methods: [GET, POST]
 
 register:
