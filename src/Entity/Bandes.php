@@ -27,7 +27,7 @@ class Bandes
     private ?\DateTimeInterface $datefin = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $dureederetension = null;
+    private ?int $dureederetension = null;
 
     #[ORM\Column(length: 255)]
     private ?string $pool = null;
@@ -88,12 +88,12 @@ class Bandes
         return $this;
     }
 
-    public function getDureederetension(): ?string
+    public function getDureederetension(): ?int
     {
         return $this->dureederetension;
     }
 
-    public function setDureederetension(string $dureederetension): static
+    public function setDureederetension(int $dureederetension): static
     {
         $this->dureederetension = $dureederetension;
 

@@ -222,50 +222,79 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
                 <i class=\"fa fa-cog fixed-plugin-button-nav cursor-pointer\"></i>
               </a>
             </li>
-            <li class=\"nav-item dropdown pe-2 d-flex align-items-center\">
-              <a href=\"javascript:;\" class=\"nav-link text-body p-0\" id=\"dropdownMenuButton\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
-                <i class=\"fa fa-bell cursor-pointer\"></i>
-              </a>
-              <ul class=\"dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4\" aria-labelledby=\"dropdownMenuButton\">
-                <li class=\"mb-2\">
-                  <a class=\"dropdown-item border-radius-md\" href=\"javascript:;\">
+          <li class=\"nav-item dropdown pe-2 d-flex align-items-center\">
+    <a href=\"javascript:;\" class=\"nav-link text-body p-0\" id=\"dropdownMenuButton\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
+        <i class=\"fa fa-bell cursor-pointer\"></i>
+        ";
+        // line 181
+        if ((twig_length_filter($this->env, (isset($context["expiredBandes"]) || array_key_exists("expiredBandes", $context) ? $context["expiredBandes"] : (function () { throw new RuntimeError('Variable "expiredBandes" does not exist.', 181, $this->source); })())) > 0)) {
+            // line 182
+            echo "            <span class=\"badge bg-danger\">";
+            echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["expiredBandes"]) || array_key_exists("expiredBandes", $context) ? $context["expiredBandes"] : (function () { throw new RuntimeError('Variable "expiredBandes" does not exist.', 182, $this->source); })())), "html", null, true);
+            echo "</span>
+        ";
+        }
+        // line 184
+        echo "    </a>
+    <ul class=\"dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4\" aria-labelledby=\"dropdownMenuButton\">
+        ";
+        // line 186
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["expiredBandes"]) || array_key_exists("expiredBandes", $context) ? $context["expiredBandes"] : (function () { throw new RuntimeError('Variable "expiredBandes" does not exist.', 186, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 187
+            echo "            <li class=\"mb-2\">
+                <a class=\"dropdown-item border-radius-md\" href=\"javascript:;\">
                     <div class=\"d-flex py-1\">
-                      <div class=\"my-auto\">
-                        <img src=\"../assets/img/team-2.jpg\" class=\"avatar avatar-sm  me-3 \">
-                      </div>
-                      <div class=\"d-flex flex-column justify-content-center\">
-                        <h6 class=\"text-sm font-weight-normal mb-1\">
-                          <span class=\"font-weight-bold\">New message</span> from Laur
-                        </h6>
-                        <p class=\"text-xs text-secondary mb-0\">
-                          <i class=\"fa fa-clock me-1\"></i>
-                          13 minutes ago
-                        </p>
-                      </div>
+                        
+                        <div class=\"d-flex flex-column justify-content-center\">
+                            <h6 class=\"text-sm font-weight-normal mb-1\">
+                            
+                                <span  class=\"font-weight-bold\">Bande expirée</span> ";
+            // line 194
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "numbande", [], "any", false, false, false, 194), "html", null, true);
+            echo "
+                            </h6>
+                            <p class=\"text-xs text-secondary mb-0\">
+                                <i class=\"fa fa-clock me-1\"></i>
+                                Expirée le ";
+            // line 198
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "datefin", [], "any", false, false, false, 198), "d/m/Y"), "html", null, true);
+            echo "
+                            </p>
+                          
+                        </div>
                     </div>
-                  </a>
-                </li>
-              
-                
-              </ul>
+                </a>
+            </li>
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 206
+        echo "    </ul>
+</li>
+
+
             </li>
             ";
-        // line 211
+        // line 217
         echo "          </ul>
         </div>
       </div>
     </nav>
      
     ";
-        // line 216
+        // line 222
         $this->displayBlock('Body', $context, $blocks);
-        // line 714
+        // line 720
         echo "
 
       ";
-        // line 716
+        // line 722
         $this->displayBlock('footer', $context, $blocks);
-        // line 752
+        // line 725
         echo "    </div>
    
   </main>
@@ -346,9 +375,9 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
   <!--   Core JS Files   -->
 
    ";
-        // line 831
+        // line 804
         $this->displayBlock('js', $context, $blocks);
-        // line 1111
+        // line 1084
         echo "
 </body>
 
@@ -405,7 +434,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     }
 
-    // line 216
+    // line 222
     public function block_Body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -415,11 +444,11 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "Body"));
 
-        // line 217
+        // line 223
         echo "    <!-- End Navbar -->
 
     ";
-        // line 697
+        // line 703
         echo "<div class=\"modal fade\" id=\"ajouterModal\" tabindex=\"-1\" aria-labelledby=\"ajouterModalLabel\" aria-hidden=\"true\">
         <div class=\"modal-dialog\">
             <div class=\"modal-content\">
@@ -431,9 +460,9 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
                 </div>
                 <div class=\"modal-body\">
                     ";
-        // line 707
+        // line 713
         $this->displayBlock('modal_content', $context, $blocks);
-        // line 708
+        // line 714
         echo "                </div>
             </div>
         </div>
@@ -448,7 +477,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     }
 
-    // line 707
+    // line 713
     public function block_modal_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -466,7 +495,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     }
 
-    // line 716
+    // line 722
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -476,27 +505,8 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 717
-        echo "      <footer class=\"footer py-4  \">
-      <center>
-        <div class=\"container-fluid\">
-          <div class=\"row align-items-center justify-content-lg-between\">
-            <div class=\"col-lg-6 mb-lg-0 mb-4\">
-              <div class=\"copyright text-center text-sm text-muted text-lg-start\">
-                © <script>
-                  document.write(new Date().getFullYear())
-                </script>,
-                made with <i class=\"fa fa-heart\"></i> by
-                <a href=\"https://github.com/amine00366\" class=\"font-weight-bold\" target=\"_blank\">Med Amine Sidhom </a>
-                for a better web.
-              </div>
-            </div>
-            ";
-        // line 747
-        echo "          </div>
-        </div>
-        </center> 
-      </footer>
+        // line 723
+        echo "      
       ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -506,7 +516,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     }
 
-    // line 831
+    // line 804
     public function block_js($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -516,24 +526,24 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
-        // line 832
+        // line 805
         echo "  <script src=";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/core/popper.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 833
+        // line 806
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/core/bootstrap.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 834
+        // line 807
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/plugins/perfect-scrollbar.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 835
+        // line 808
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/plugins/smooth-scrollbar.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 836
+        // line 809
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/plugins/chartjs.min.js"), "html", null, true);
         echo "></script>
    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>
@@ -830,7 +840,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     public function getDebugInfo()
     {
-        return array (  537 => 836,  533 => 835,  529 => 834,  525 => 833,  520 => 832,  510 => 831,  496 => 747,  480 => 717,  470 => 716,  452 => 707,  437 => 708,  435 => 707,  423 => 697,  419 => 217,  409 => 216,  393 => 37,  384 => 31,  380 => 30,  375 => 27,  365 => 26,  352 => 1111,  350 => 831,  269 => 752,  267 => 716,  263 => 714,  261 => 216,  254 => 211,  210 => 163,  206 => 160,  179 => 135,  120 => 79,  113 => 74,  109 => 72,  107 => 71,  77 => 43,  75 => 26,  48 => 1,);
+        return array (  547 => 809,  543 => 808,  539 => 807,  535 => 806,  530 => 805,  520 => 804,  509 => 723,  499 => 722,  481 => 713,  466 => 714,  464 => 713,  452 => 703,  448 => 223,  438 => 222,  422 => 37,  413 => 31,  409 => 30,  404 => 27,  394 => 26,  381 => 1084,  379 => 804,  298 => 725,  296 => 722,  292 => 720,  290 => 222,  283 => 217,  276 => 206,  262 => 198,  255 => 194,  246 => 187,  242 => 186,  238 => 184,  232 => 182,  230 => 181,  210 => 163,  206 => 160,  179 => 135,  120 => 79,  113 => 74,  109 => 72,  107 => 71,  77 => 43,  75 => 26,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -1012,32 +1022,38 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
                 <i class=\"fa fa-cog fixed-plugin-button-nav cursor-pointer\"></i>
               </a>
             </li>
-            <li class=\"nav-item dropdown pe-2 d-flex align-items-center\">
-              <a href=\"javascript:;\" class=\"nav-link text-body p-0\" id=\"dropdownMenuButton\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
-                <i class=\"fa fa-bell cursor-pointer\"></i>
-              </a>
-              <ul class=\"dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4\" aria-labelledby=\"dropdownMenuButton\">
-                <li class=\"mb-2\">
-                  <a class=\"dropdown-item border-radius-md\" href=\"javascript:;\">
+          <li class=\"nav-item dropdown pe-2 d-flex align-items-center\">
+    <a href=\"javascript:;\" class=\"nav-link text-body p-0\" id=\"dropdownMenuButton\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
+        <i class=\"fa fa-bell cursor-pointer\"></i>
+        {% if expiredBandes|length > 0 %}
+            <span class=\"badge bg-danger\">{{ expiredBandes|length }}</span>
+        {% endif %}
+    </a>
+    <ul class=\"dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4\" aria-labelledby=\"dropdownMenuButton\">
+        {% for message in expiredBandes %}
+            <li class=\"mb-2\">
+                <a class=\"dropdown-item border-radius-md\" href=\"javascript:;\">
                     <div class=\"d-flex py-1\">
-                      <div class=\"my-auto\">
-                        <img src=\"../assets/img/team-2.jpg\" class=\"avatar avatar-sm  me-3 \">
-                      </div>
-                      <div class=\"d-flex flex-column justify-content-center\">
-                        <h6 class=\"text-sm font-weight-normal mb-1\">
-                          <span class=\"font-weight-bold\">New message</span> from Laur
-                        </h6>
-                        <p class=\"text-xs text-secondary mb-0\">
-                          <i class=\"fa fa-clock me-1\"></i>
-                          13 minutes ago
-                        </p>
-                      </div>
+                        
+                        <div class=\"d-flex flex-column justify-content-center\">
+                            <h6 class=\"text-sm font-weight-normal mb-1\">
+                            
+                                <span  class=\"font-weight-bold\">Bande expirée</span> {{ message.numbande }}
+                            </h6>
+                            <p class=\"text-xs text-secondary mb-0\">
+                                <i class=\"fa fa-clock me-1\"></i>
+                                Expirée le {{ message.datefin|date('d/m/Y') }}
+                            </p>
+                          
+                        </div>
                     </div>
-                  </a>
-                </li>
-              
-                
-              </ul>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</li>
+
+
             </li>
             {# <li class=\"nav-item d-flex align-items-center\">
               <a href=\"../pages/sign-in.html\" class=\"nav-link text-body font-weight-bold px-0\">
@@ -1551,40 +1567,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
 
       {% block footer %}
-      <footer class=\"footer py-4  \">
-      <center>
-        <div class=\"container-fluid\">
-          <div class=\"row align-items-center justify-content-lg-between\">
-            <div class=\"col-lg-6 mb-lg-0 mb-4\">
-              <div class=\"copyright text-center text-sm text-muted text-lg-start\">
-                © <script>
-                  document.write(new Date().getFullYear())
-                </script>,
-                made with <i class=\"fa fa-heart\"></i> by
-                <a href=\"https://github.com/amine00366\" class=\"font-weight-bold\" target=\"_blank\">Med Amine Sidhom </a>
-                for a better web.
-              </div>
-            </div>
-            {# <div class=\"col-lg-6\">
-              <ul class=\"nav nav-footer justify-content-center justify-content-lg-end\">
-                <li class=\"nav-item\">
-                  <a href=\"https://www.creative-tim.com\" class=\"nav-link text-muted\" target=\"_blank\">Creative Tim</a>
-                </li>
-                <li class=\"nav-item\">
-                  <a href=\"https://www.creative-tim.com/presentation\" class=\"nav-link text-muted\" target=\"_blank\">About Us</a>
-                </li>
-                <li class=\"nav-item\">
-                  <a href=\"https://www.creative-tim.com/blog\" class=\"nav-link text-muted\" target=\"_blank\">Blog</a>
-                </li>
-                <li class=\"nav-item\">
-                  <a href=\"https://www.creative-tim.com/license\" class=\"nav-link pe-0 text-muted\" target=\"_blank\">License</a>
-                </li>
-              </ul> 
-            </div> #}
-          </div>
-        </div>
-        </center> 
-      </footer>
+      
       {% endblock %}
     </div>
    

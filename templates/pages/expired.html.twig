@@ -1,0 +1,84 @@
+
+
+   
+       
+{% extends 'admin.html.twig' %}
+
+{% block Body %}
+<div class="container-fluid py-4">
+ 
+
+
+    <a href="#" data-toggle="modal" data-target="#ajouterModal" class="btn btn-gd btn-outline-info">Ajouter une bande</a>
+<button type="button" class="btn btn-gd btn-outline-info" id="ouvrirModal">Ajouter</button>
+
+<form action="{{ path('searchBande') }}" method="GET">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" name="search" placeholder="Rechercher">
+        <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
+    </div>
+</form>
+
+       <a href="{{ path('AddBandes') }}"><button type="button" class="btn btn-gd btn-outline-info">ajouter </button></a>
+     <div class="col-12">
+    <div class="card my-4">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="custom-bg-blue shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Tableau des Bandes Expirée</h6>
+            </div>
+        </div>
+        <div class="card-body px-0 pb-2">
+            <div class="table-responsive p-0">
+             {% if expiredBandes is empty %}
+        <p>Aucune bande n'est expirée pour le moment.</p>
+             {% else %}
+                <table class="table align-items-center mb-0">
+                    <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Numéro du Bande</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Label</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Debut</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Fin</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Durée de rétention</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pool</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Armoire</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                    {% for a in expiredBandes %}  
+                        <tr>
+                            <td>{{ a.numBande }}</td>
+                            <td>{{ a.label }}</td>
+                            <td class="text-center">{{ a.datedebut|date("Y-m-d") }}</td>
+                            <td class="text-center">{{ a.datefin|date("Y-m-d") }}</td>
+                            <td class="text-center">{{ a.dureederetension }} ans</td>
+                            <td class="text-center">{{ a.pool }}</td>
+                            <td class="text-center">{{ a.arm }}</td>
+                            <td class="text-center">
+                                <a href="{{ path('deleteBande', {'id': a.id}) }}" class="btn btn-sm btn-outline-danger">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                                <a href="{{ path('editBande', {'id': a.id}) }}" class="btn btn-sm btn-outline-info">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+{% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+     
+   
+    <style>
+    /* Dans votre fichier CSS */
+.custom-bg-blue {
+    background-color: royalblue; /* Utilisez la couleur bleu roi de votre choix */
+}
+</style>
+{% endblock %}

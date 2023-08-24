@@ -13,6 +13,13 @@ signup:
     methods: [GET, POST]
 
 
+
+showExpiredBandes:
+    path: /showExpiredBandes
+    controller: App\Controller\PagesController::showExpiredBandes
+    methods: [GET, POST]
+
+
 logintemplate:
     path: /logintemp
     controller: App\Controller\PagesController::logintemp
@@ -39,6 +46,10 @@ AddBandes:
     controller: App\Controller\PagesController::ajouterBande 
     methods: [GET, POST]
 
+BandeExpire:
+    path: /BandeExpire
+    controller: App\Controller\PagesController::BandeExpire 
+    methods: [GET, POST]
 
 listBandes:
     path: /listBandes

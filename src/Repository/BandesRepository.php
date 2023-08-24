@@ -53,4 +53,15 @@ public function searchTerm($terms)
         ->getQuery()
         ->getResult();
 }
+
+public function isBandeExpired(Bandes $bande): bool
+{
+    $currentDate = new \DateTime();
+    $difference = $bande->getDatefin()->diff($currentDate);
+    $yearsDifference = $difference->y;
+    
+    return $yearsDifference >= (int) $bande->getDureederetension();
+
+}
+
 }

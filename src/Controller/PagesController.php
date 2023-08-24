@@ -39,6 +39,16 @@ class PagesController extends AbstractController
     {
         $bandes = $repository->findAll();
 
+        
+    
+        $expiredBandes = [];
+        foreach ($bandes as $bande) {
+            if ($repository->isBandeExpired($bande)) {
+                $expiredBandes[] = $bande;
+            }
+        
+        }
+
        
         $bande = new Bandes();
 
@@ -52,10 +62,11 @@ class PagesController extends AbstractController
     
             $this->addFlash('success', 'La bande a été ajoutée avec succès.');
     
-            return $this->redirectToRoute('tableau'); // Redirige où vous voulez
+            return $this->redirectToRoute('listBandes'); // Redirige où vous voulez
         }
     
         return $this->render('pages/Bandes.html.twig', ['Bandes' => $bandes,
+        'expiredBandes' => $expiredBandes,
         'form' => $form->createView(),
     ]);
             
@@ -162,6 +173,44 @@ class PagesController extends AbstractController
     {  return $this->render('pages/login.html.twig');
     }
      
+
+    
+
+    public function showExpiredBandes(BandesRepository $bandeRepository): Response
+    {
+        $allBandes = $bandeRepository->findAll();
+    
+        $expiredBandes = [];
+        foreach ($allBandes as $bande) {
+            if ($bandeRepository->isBandeExpired($bande)) {
+                $expiredBandes[] = $bande;
+            }
+        
+        }
+
+        return $this->render('admin.html.twig', [
+            'expiredBandes' => $expiredBandes,
+        ]);
+        
+    }
+
+    public function BandeExpire(BandesRepository $bandeRepository): Response
+    {
+        $allBandes = $bandeRepository->findAll();
+    
+        $expiredBandes = [];
+        foreach ($allBandes as $bande) {
+            if ($bandeRepository->isBandeExpired($bande)) {
+                $expiredBandes[] = $bande;
+            }
+        
+        }
+
+        return $this->render('pages/expired.html.twig', [
+            'expiredBandes' => $expiredBandes,
+        ]);
+        
+    }
     ///// modifier une armoire 
    
     
