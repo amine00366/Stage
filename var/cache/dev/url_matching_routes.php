@@ -26,6 +26,9 @@ return [
         '/addBandes' => [[['_route' => 'AddBandes', '_controller' => 'App\\Controller\\PagesController::ajouterBande'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/BandeExpire' => [[['_route' => 'BandeExpire', '_controller' => 'App\\Controller\\PagesController::BandeExpire'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/listBandes' => [[['_route' => 'listBandes', '_controller' => 'App\\Controller\\PagesController::listBandes'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/list' => [[['_route' => 'list', '_controller' => 'App\\Controller\\PagesController::list'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/listPoolCount' => [[['_route' => 'listPoolCount', '_controller' => 'App\\Controller\\PagesController::listPoolCount'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/chart' => [[['_route' => 'chart', '_controller' => 'App\\Controller\\PagesController::chart'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/users' => [[['_route' => 'users', '_controller' => 'App\\Controller\\RegistrationController::users'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/admin' => [[['_route' => 'index', '_controller' => 'App\\Controller\\PagesController::index'], null, null, null, false, false, null]],
         '/aa' => [[['_route' => 'tableau', '_controller' => 'App\\Controller\\PagesController::listarmoire'], null, null, null, false, false, null]],
@@ -58,6 +61,7 @@ return [
                     .'|Armoire/([^/]++)(*:292)'
                     .'|Bande/([^/]++)(*:314)'
                 .')'
+                .'|/listBandestri/([^/]++)(*:346)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -73,8 +77,9 @@ return [
         238 => [[['_route' => 'deleteBande', '_controller' => 'App\\Controller\\PagesController::deleteBande'], ['id'], null, null, false, true, null]],
         268 => [[['_route' => 'editUser', '_controller' => 'App\\Controller\\RegistrationController::editUser'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
         292 => [[['_route' => 'editArmoire', '_controller' => 'App\\Controller\\PagesController::editArmoire'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
-        314 => [
-            [['_route' => 'editBande', '_controller' => 'App\\Controller\\PagesController::editBande'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null],
+        314 => [[['_route' => 'editBande', '_controller' => 'App\\Controller\\PagesController::editBande'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        346 => [
+            [['_route' => 'listBandestri', '_controller' => 'App\\Controller\\PagesController::listBandestri'], ['ascending'], ['GET' => 0, 'POST' => 1], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

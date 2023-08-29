@@ -92,7 +92,10 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
     <div class=\"collapse navbar-collapse  w-auto \" id=\"sidenav-collapse-main\">
       <ul class=\"navbar-nav\">
         <li class=\"nav-item\">
-          <a class=\"nav-link text-white active bg-gradient-primary\" href=\"../pages/dashboard.html\">
+          <a class=\"nav-link text-white active bg-gradient-primary\" href=\"";
+        // line 61
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("dashboard");
+        echo "\">
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
               <i class=\"material-icons opacity-10\">dashboard</i>
             </div>
@@ -151,11 +154,14 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
           <h6 class=\"ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8\">Account pages</h6>
         </li>
         <li class=\"nav-item\">
-          <a class=\"nav-link text-white \" href=\"../pages/profile.html\">
+          <a class=\"nav-link text-white \" href=\"";
+        // line 109
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("users");
+        echo "\">
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
               <i class=\"material-icons opacity-10\">person</i>
             </div>
-            <span class=\"nav-link-text ms-1\">Profile</span>
+            <span class=\"nav-link-text ms-1\">Utilisateurs </span>
           </a>
         </li>
         ";
@@ -780,7 +786,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     public function getDebugInfo()
     {
-        return array (  487 => 810,  483 => 809,  479 => 808,  475 => 807,  471 => 806,  468 => 805,  458 => 804,  447 => 722,  437 => 721,  419 => 712,  404 => 713,  402 => 712,  390 => 702,  386 => 222,  376 => 221,  360 => 39,  351 => 33,  347 => 32,  342 => 29,  332 => 28,  319 => 1085,  317 => 804,  235 => 724,  233 => 721,  229 => 719,  227 => 221,  220 => 216,  215 => 207,  198 => 162,  194 => 159,  170 => 137,  163 => 132,  125 => 81,  118 => 76,  114 => 74,  112 => 73,  105 => 69,  79 => 45,  77 => 28,  48 => 1,);
+        return array (  493 => 810,  489 => 809,  485 => 808,  481 => 807,  477 => 806,  474 => 805,  464 => 804,  453 => 722,  443 => 721,  425 => 712,  410 => 713,  408 => 712,  396 => 702,  392 => 222,  382 => 221,  366 => 39,  357 => 33,  353 => 32,  348 => 29,  338 => 28,  325 => 1085,  323 => 804,  241 => 724,  239 => 721,  235 => 719,  233 => 221,  226 => 216,  221 => 207,  204 => 162,  200 => 159,  176 => 137,  169 => 132,  159 => 109,  128 => 81,  121 => 76,  117 => 74,  115 => 73,  108 => 69,  97 => 61,  79 => 45,  77 => 28,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -845,7 +851,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
     <div class=\"collapse navbar-collapse  w-auto \" id=\"sidenav-collapse-main\">
       <ul class=\"navbar-nav\">
         <li class=\"nav-item\">
-          <a class=\"nav-link text-white active bg-gradient-primary\" href=\"../pages/dashboard.html\">
+          <a class=\"nav-link text-white active bg-gradient-primary\" href=\"{{ path('dashboard') }}\">
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
               <i class=\"material-icons opacity-10\">dashboard</i>
             </div>
@@ -893,11 +899,11 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
           <h6 class=\"ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8\">Account pages</h6>
         </li>
         <li class=\"nav-item\">
-          <a class=\"nav-link text-white \" href=\"../pages/profile.html\">
+          <a class=\"nav-link text-white \" href=\"{{ path('users') }}\">
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
               <i class=\"material-icons opacity-10\">person</i>
             </div>
-            <span class=\"nav-link-text ms-1\">Profile</span>
+            <span class=\"nav-link-text ms-1\">Utilisateurs </span>
           </a>
         </li>
         {# <li class=\"nav-item\">

@@ -1,0 +1,26 @@
+{# Dans le fichier list.html.twig de votre bundle #}
+
+{% extends 'admin.html.twig' %}
+
+{% block Body %}
+    <h1>Liste des Armoires</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom de l'Armoire</th>
+                <th>Nombre de Bandes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for armoire in armoires %}
+                <tr>
+                    <td>{{ armoire.id }}</td>
+                    <td>{{ armoire.nom }}</td>
+                    <td>{{ armoireCounts[armoire.id] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

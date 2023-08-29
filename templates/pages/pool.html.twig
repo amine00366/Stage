@@ -1,0 +1,24 @@
+{# Créez un fichier pool_counts.html.twig dans le répertoire approprié #}
+
+{% extends 'admin.html.twig' %}
+
+{% block Body %}
+    <h1>Nombre de Bandes par Pool</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Pool</th>
+                <th>Nombre de Bandes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pool, count in poolCounts %}
+                <tr>
+                    <td>{{ pool }}</td>
+                    <td>{{ count }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

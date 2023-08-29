@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Armoire;
 use App\Entity\Bandes;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -91,5 +92,46 @@ public function getBandsEnteredPerDay(): array
     return $query->getResult();
 }
 
+public function findAllByDateFinOrder(bool $ascending = true)
+{
+    $qb = $this->createQueryBuilder('b')
+        ->orderBy('b.datefin', $ascending ? 'ASC' : 'DESC')
+        ->getQuery();
 
+    return $qb->getResult();
+}
+
+public function countBandesByArmoire(Armoire $armoire)
+{
+    return $this->createQueryBuilder('b')
+        ->select('COUNT(b.id)')
+        ->where('b.arm = :armoire')
+        ->setParameter('armoire', $armoire)
+        ->getQuery()
+        ->getSingleScalarResult();
+}
+
+public function countBandesByPool($pool)
+{
+    return $this->createQueryBuilder('b')
+        ->select('COUNT(b.id)')
+        ->where('b.pool = :pool')
+        ->setParameter('pool', $pool)
+        ->getQuery()
+        ->getSingleScalarResult();
+}
+public function getBandsCountPerMonth()
+{
+    $connection = $this->getEntityManager()->getConnection();
+
+    $sql = '
+        SELECT DATE_FORMAT(datedebut, "%Y-%m") AS month, COUNT(id) AS count
+        FROM bandes
+        GROUP BY month
+        ORDER BY month ASC
+    ';
+
+    $resultStatement = $connection->executeQuery($sql);
+    return $resultStatement->fetchAllAssociative(); // Ou fetchAllNumeric() en fonction de la structure des résultats
+}
 }

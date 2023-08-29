@@ -18,7 +18,7 @@ security:
             form_login:
                 login_path: app_login
                 check_path: app_login
-                default_target_path: /aa
+                # default_target_path: /aa
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator # Check the correct path to your LoginFormAuthenticator
@@ -30,7 +30,7 @@ security:
                 target: app_login
 
     access_control:
-         - { path: ^/aa, roles: ROLE_ADMIN }
+         - { path: ^/profile, roles: ROLE_ADMIN }
          - { path: ^/profile, roles: ROLE_USER }
 
 # Other configurations for tests

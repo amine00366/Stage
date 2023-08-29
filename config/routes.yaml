@@ -85,6 +85,28 @@ listBandes:
     controller: App\Controller\PagesController::listBandes 
     methods: [GET, POST]
 
+listBandestri:
+    path: /listBandestri/{ascending}
+    controller: App\Controller\PagesController::listBandestri
+    methods: [GET, POST]
+
+list:
+    path: /list
+    controller: App\Controller\PagesController::list
+    methods: [GET, POST]
+
+
+listPoolCount:
+    path: /listPoolCount
+    controller: App\Controller\PagesController::listPoolCount
+    methods: [GET, POST]
+
+chart:
+    path: /chart
+    controller: App\Controller\PagesController::chart
+    methods: [GET, POST]
+
+
 users:
     path: /users
     controller: App\Controller\RegistrationController::users 

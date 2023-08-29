@@ -63,8 +63,20 @@ class BandeType extends AbstractType
             
             ->add('dureederetension')
 
-            ->add('pool')
-
+            // ->add('pool')
+            ->add('pool', ChoiceType::class, [
+                'choices' => [
+                    'Long Local' => 'Long Local',
+                    'T24' => 'T24',
+                    'G7' => 'G7',
+                    'Exchange' => 'Exchange',
+                    'Long durée' => 'Long durée',
+                    'E10K' => 'E10K',
+                ],
+                'label' => 'Sélectionnez un rôle',
+                
+                'attr' => ['class' => 'form-control'],
+            ])
             ->add('arm',EntityType::class, [
                 'placeholder' => '',
                 'class' => Armoire::class,

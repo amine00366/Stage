@@ -72,11 +72,11 @@ class __TwigTemplate_4f62b9444949eb414b3516b6931344c3 extends Template
         echo "\"><button type=\"button\" class=\"btn btn-gd btn-outline-info\">ajouter une Armoire</button></a>      <div class=\"row\">
         <div class=\"col-12\">
           <div class=\"card my-4\">
-            <div class=\"card-header p-0 position-relative mt-n4 mx-3 z-index-2\">
-              <div class=\"bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3\">
-                <h6 class=\"text-white text-capitalize ps-3\">tableau des Armoires</h6>
-              </div>
+           <div class=\"card-header p-0 position-relative mt-n4 mx-3 z-index-2\">
+            <div class=\"custom-bg-blue shadow-primary border-radius-lg pt-4 pb-3\">
+                <h6 class=\"text-white text-capitalize ps-3\">Tableau des Armoires</h6>
             </div>
+        </div>
             <div class=\"card-body px-0 pb-2\">
               <div class=\"table-responsive p-0\">
                 <table class=\"table align-items-center mb-0\">
@@ -148,7 +148,12 @@ class __TwigTemplate_4f62b9444949eb414b3516b6931344c3 extends Template
           </div>
         </div>
       </div>
-     
+       <style>
+    /* Dans votre fichier CSS */
+.custom-bg-blue {
+    background-color: royalblue; /* Utilisez la couleur bleu roi de votre choix */
+}
+</style>
     </div>
 ";
         
@@ -183,11 +188,11 @@ class __TwigTemplate_4f62b9444949eb414b3516b6931344c3 extends Template
 <a href=\"{{ path('ajoutArmoire') }}\"><button type=\"button\" class=\"btn btn-gd btn-outline-info\">ajouter une Armoire</button></a>      <div class=\"row\">
         <div class=\"col-12\">
           <div class=\"card my-4\">
-            <div class=\"card-header p-0 position-relative mt-n4 mx-3 z-index-2\">
-              <div class=\"bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3\">
-                <h6 class=\"text-white text-capitalize ps-3\">tableau des Armoires</h6>
-              </div>
+           <div class=\"card-header p-0 position-relative mt-n4 mx-3 z-index-2\">
+            <div class=\"custom-bg-blue shadow-primary border-radius-lg pt-4 pb-3\">
+                <h6 class=\"text-white text-capitalize ps-3\">Tableau des Armoires</h6>
             </div>
+        </div>
             <div class=\"card-body px-0 pb-2\">
               <div class=\"table-responsive p-0\">
                 <table class=\"table align-items-center mb-0\">
@@ -236,7 +241,12 @@ class __TwigTemplate_4f62b9444949eb414b3516b6931344c3 extends Template
           </div>
         </div>
       </div>
-     
+       <style>
+    /* Dans votre fichier CSS */
+.custom-bg-blue {
+    background-color: royalblue; /* Utilisez la couleur bleu roi de votre choix */
+}
+</style>
     </div>
 {% endblock %}
 ", "pages/profile.html.twig", "C:\\Users\\amine\\Bureau\\StageProject\\templates\\pages\\profile.html.twig");

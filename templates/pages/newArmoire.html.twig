@@ -1,57 +1,48 @@
-
 {% extends 'admin.html.twig' %}
 
-
- {% block Body %}
+{% block Body %}
 <style>
-label {
-  font-weight: bold;
-  color:Blue sky;
-  text-transform: uppercase;
-}
-
+    label {
+        font-weight: bold;
+        color: blue; /* 'blue' ne sera pas reconnu, utilisez une couleur CSS valide */
+        text-transform: uppercase;
+    }
 </style>
 
 <div class="page-wrapper">
-<div class="container-fluid">
+    <div class="container-fluid">
 
-<div class="row">
+        <div class="row justify-content-center"> <!-- Alignement au centre -->
 
-<div class="container">
+            <div class="col-lg-6"> <!-- Utilisez une classe de grille pour le dimensionnement -->
+                <div class="card"> <!-- Ajoutez la classe 'card' pour le style de carte -->
+                    <div class="card-body">
 
-    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-    <center>
-        <style>
-            table {
-                margin-top: 50px;
-                margin-right: -40px;
-            }
-        </style>
-        <div>
-            <table>
-                 <div class="form-floating mb-3">
-              {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom du type'}}) }}
-              {{ form_errors(form.nom) }}
-              {{ form_label(form.nom, "Nom du categories", {'label_attr': {'class': 'small mb-1'}}) }}
+                        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                        <div class="mb-3">
+                            {{ form_label(form.nom, "Nom", {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom '}}) }}
+                            {{ form_errors(form.nom) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(form.description, "Description", {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(form.description, {'attr': {'class': 'form-control', 'placeholder': 'Description'}}) }}
+                            {{ form_errors(form.description) }}
+                        </div>
+
+                        <div class="d-grid">
+                            <button class="btn btn-primary mt-3" type="submit">{{ button_success|default('sauvegarder') }}</button>
+                        </div>
+
+                        {{ form_end(form) }}
+
+                    </div>
+                </div>
             </div>
 
-            <div class="form-floating mb-3">
-              {{ form_widget(form.description, {'attr': {'class': 'form-control', 'placeholder': 'Nom du type'}}) }}
-              {{ form_errors(form.description) }}
-              {{ form_label(form.description, "Nom du categories", {'label_attr': {'class': 'small mb-1'}}) }}
-            </div>
-
-            
-            </table>
         </div>
-    </center>
-    
-    
-         <div class="d-grid" ><button  class="btn btn-primary mt-3" type="submit">{{ button_success|default('sauvegarder') }}</button></div>
     </div>
-    {{ form_end(form) }}
-    </div>
-    </div>
-    </div>
+</div>
 {% endblock %}
- 

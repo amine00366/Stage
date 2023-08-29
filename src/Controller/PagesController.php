@@ -51,8 +51,29 @@ class PagesController extends AbstractController
         $allBandes = $bandesRepository->findAll();
         $bandesByDay = $bandesRepository->getBandsEnteredPerDay();
 
+        $bandesRepository = $this->getDoctrine()->getRepository(Bandes::class);
+        $bandesPerMonth = $bandesRepository->getBandsCountPerMonth();
+
         $chartLabels = [];
         $chartData = [];
+
+        $armoireRepository = $this->getDoctrine()->getRepository(Armoire::class);
+        $armoires = $armoireRepository->findAll();
+       
+        $poolRepository = $this->getDoctrine()->getRepository(Bandes::class);
+        $pools = ['Long Local', 'T24', 'G7', 'Exchange', 'Long durée', 'E10K'];
+        $poolCounts = [];
+        
+        foreach ($pools as $pool) {
+            $count = $poolRepository->countBandesByPool($pool);
+            $poolCounts[$pool] = $count;
+        }
+        $bandeRepository = $this->getDoctrine()->getRepository(Bandes::class);
+        $armoireCounts = [];
+        foreach ($armoires as $armoire) {
+            $count = $bandeRepository->countBandesByArmoire($armoire);
+            $armoireCounts[$armoire->getId()] = $count;
+        }
 
         foreach ($bandesByDay as $entry) {
             $chartLabels[] = $entry['day']->format('Y-m-d');
@@ -74,8 +95,66 @@ class PagesController extends AbstractController
             'Bandes'=>$Bandes,
             'chartLabels' => json_encode($chartLabels),
             'chartData' => json_encode($chartData),
+            'armoires' => $armoires,
+            'armoireCounts' => $armoireCounts,
+            'poolCounts' => $poolCounts,
+            'bandesPerMonth' => $bandesPerMonth,
         ]);
     }
+
+
+    ///////////////////////
+
+
+    public function chart(): Response
+    {
+        $bandesRepository = $this->getDoctrine()->getRepository(Bandes::class);
+        $bandesPerMonth = $bandesRepository->getBandsCountPerMonth();
+
+        return $this->render('pages/chart.html.twig', [
+            'bandesPerMonth' => $bandesPerMonth,
+        ]);
+    }
+    ///////////////////////
+    public function listPoolCount(): Response
+    {
+        $poolRepository = $this->getDoctrine()->getRepository(Bandes::class);
+        $pools = ['Long Local', 'T24', 'G7', 'Exchange', 'Long durée', 'E10K'];
+        $poolCounts = [];
+        
+        foreach ($pools as $pool) {
+            $count = $poolRepository->countBandesByPool($pool);
+            $poolCounts[$pool] = $count;
+        }
+
+        return $this->render('pages/pool.html.twig', [
+            'poolCounts' => $poolCounts,
+        ]);
+    }
+
+    ///////////////////////
+    public function list(): Response
+    {
+        $armoireRepository = $this->getDoctrine()->getRepository(Armoire::class);
+        $armoires = $armoireRepository->findAll();
+
+        $bandeRepository = $this->getDoctrine()->getRepository(Bandes::class);
+        $armoireCounts = [];
+        foreach ($armoires as $armoire) {
+            $count = $bandeRepository->countBandesByArmoire($armoire);
+            $armoireCounts[$armoire->getId()] = $count;
+        }
+
+        return $this->render('pages/Dashbord.html.twig', [
+            'armoires' => $armoires,
+            'armoireCounts' => $armoireCounts,
+        ]);
+    }
+
+
+
+
+
 ///// la liste des armoire 
     public function listarmoire(ArmoireRepository $repository ,BandesRepository $Brepository,Request $request )
     {
@@ -116,7 +195,6 @@ class PagesController extends AbstractController
 
        
         $bande = new Bandes();
-
         $form = $this->createForm(BandeType::class, $bande);
         $form->handleRequest($request);
     
@@ -133,12 +211,23 @@ class PagesController extends AbstractController
         return $this->render('pages/Bandes.html.twig', ['Bandes' => $bandes,
         'expiredBandes' => $expiredBandes,
         'form' => $form->createView(),
+        'bandes' => $bandes,
+        
     ]);
             
         
     }
     
 
+    public function listBandestri(bool $ascending = true): Response
+    {
+        $bandes = $this->getDoctrine()->getRepository(Bandes::class)->findAllByDateFinOrder($ascending);
+
+        return $this->render('pages/Bandes.html.twig', [
+            'bandes' => $bandes,
+            'ascending' => $ascending,
+        ]);
+    }
     ///// njareb ///////////
     public function aa(): Response
     {

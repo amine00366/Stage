@@ -5243,7 +5243,7 @@
     </service>
     <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap">
       <call method="add">
-        <argument type="service" id=".security.request_matcher.SOVigX6"/>
+        <argument type="service" id=".security.request_matcher.Pn7yvdV"/>
         <argument type="collection">
           <argument>ROLE_ADMIN</argument>
         </argument>
@@ -5778,8 +5778,8 @@
       <call method="setOptions">
         <argument type="collection">
           <argument key="login_path">app_login</argument>
-          <argument key="default_target_path">/aa</argument>
           <argument key="always_use_default_target_path">false</argument>
+          <argument key="default_target_path">/</argument>
           <argument key="target_path_parameter">_target_path</argument>
           <argument key="use_referer">false</argument>
         </argument>
@@ -5852,9 +5852,6 @@
         <argument key="security.firewall.map.context.dev" type="service_closure" id="security.firewall.map.context.dev"/>
         <argument key="security.firewall.map.context.main" type="service_closure" id="security.firewall.map.context.main"/>
       </argument>
-    </service>
-    <service id=".security.request_matcher.SOVigX6" class="Symfony\Component\HttpFoundation\RequestMatcher">
-      <argument>^/aa</argument>
     </service>
     <service id=".security.request_matcher.Pn7yvdV" class="Symfony\Component\HttpFoundation\RequestMatcher">
       <argument>^/profile</argument>
