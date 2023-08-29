@@ -1,0 +1,25 @@
+{# templates/pages/cal.html.twig #}
+
+{% extends 'admin.html.twig' %}
+
+{% block content %}
+    <div id="calendar"></div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var data = {{ data|raw }};
+            
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: data
+            });
+
+            calendar.render();
+        });
+    </script>
+{% endblock %}

@@ -8,6 +8,7 @@ use App\Form\BandeType;
 use App\Repository\ArmoireRepository;
 use App\Repository\BandeRepository;
 use App\Repository\BandesRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,13 +23,77 @@ class PagesController extends AbstractController
         return $this->render('pages/index.html.twig');
     }
 
+    public function bandesChart(BandesRepository $bandesRepository): Response
+    {
+        // Obtenez les données pour le graphique
+        $chartData = $bandesRepository->getBandsEnteredPerDay();
 
+        // Transformez les données en un format approprié pour le graphique
+        $chartLabels = [];
+        $chartCounts = [];
+
+        foreach ($chartData as $entry) {
+            $chartLabels[] = $entry['day'];
+            $chartCounts[] = $entry['count'];
+        }
+
+        return $this->render('bandes/chart.html.twig', [
+            'chartLabels' => $chartLabels,
+            'chartData' => $chartCounts,
+        ]);
+    }
+    
+    public function dashboard(UserRepository $userRepository,BandesRepository $bandesRepository,ArmoireRepository $arm): Response
+    {   $armCount = $arm->countARM();
+        $userCount = $userRepository->countUsers();
+        $Bandes= $bandesRepository->countBandes();
+        $adminUserCount = $userRepository->countAdminUsers();
+        $allBandes = $bandesRepository->findAll();
+        $bandesByDay = $bandesRepository->getBandsEnteredPerDay();
+
+        $chartLabels = [];
+        $chartData = [];
+
+        foreach ($bandesByDay as $entry) {
+            $chartLabels[] = $entry['day']->format('Y-m-d');
+            $chartData[] = $entry['count'];
+        }
+
+        $expiredBandsCount = 0;
+
+        foreach ($allBandes as $bande) {
+            if ($bandesRepository->isBandeExpired($bande)) {
+                $expiredBandsCount++;
+            }
+        }
+        return $this->render('pages/Dashbord.html.twig', [
+            'userCount' => $userCount,
+            'adminUserCount' => $adminUserCount,
+            'armCount'=> $armCount,
+            'expiredBandsCount' => $expiredBandsCount,
+            'Bandes'=>$Bandes,
+            'chartLabels' => json_encode($chartLabels),
+            'chartData' => json_encode($chartData),
+        ]);
+    }
 ///// la liste des armoire 
-    public function listarmoire(ArmoireRepository $repository ,Request $request )
+    public function listarmoire(ArmoireRepository $repository ,BandesRepository $Brepository,Request $request )
     {
         $Armoire= $this->getDoctrine()->getRepository(Armoire::class)->findAll();
+        $bandes = $Brepository->findAll();
 
-    return $this->render('pages/profile.html.twig',['armoire'=>$Armoire]);
+        
+    
+        $expiredBandes = [];
+        foreach ($bandes as $bande) {
+            if ($Brepository->isBandeExpired($bande)) {
+                $expiredBandes[] = $bande;
+            }
+        
+        }
+    return $this->render('pages/profile.html.twig',[
+    'expiredBandes' => $expiredBandes,
+    'armoire'=>$Armoire]);
     }
 
 
@@ -91,12 +156,22 @@ class PagesController extends AbstractController
 
 
     ///// ajout armoire 
-    public function new(Request $request): Response
+    public function new(Request $request ,BandesRepository $bandeRepository): Response
     {
         $Armoire = new Armoire();
         $form = $this->createForm(ArmoireType::class, $Armoire);
         $form->handleRequest($request);
+        $bandes = $bandeRepository->findAll();
 
+        
+    
+        $expiredBandes = [];
+        foreach ($bandes as $bande) {
+            if ($bandeRepository->isBandeExpired($bande)) {
+                $expiredBandes[] = $bande;
+            }
+        
+        }
         if ($form->isSubmitted() && $form->isValid()) {
            
             $entityManager = $this->getDoctrine()->getManager();
@@ -110,6 +185,7 @@ class PagesController extends AbstractController
 
         return $this->render('pages/newArmoire.html.twig', [
             'armoire' => $Armoire,
+            'expiredBandes' => $expiredBandes,
             'form' => $form->createView(),
         ]);
     }
@@ -214,10 +290,20 @@ class PagesController extends AbstractController
     ///// modifier une armoire 
    
     
-    public function editArmoire(Request $request, EntityManagerInterface $entityManager, $id): Response
+    public function editArmoire(Request $request, EntityManagerInterface $entityManager,BandesRepository $bandeRepository, $id): Response
     {
         $armoire = $entityManager->getRepository(Armoire::class)->find($id);
+        $bandes = $bandeRepository->findAll();
+
+        
     
+        $expiredBandes = [];
+        foreach ($bandes as $bande) {
+            if ($bandeRepository->isBandeExpired($bande)) {
+                $expiredBandes[] = $bande;
+            }
+        
+        }
         if (!$armoire) {
             throw $this->createNotFoundException('Aucune armoire trouvée pour cet ID : ' . $id);
         }
@@ -233,6 +319,7 @@ class PagesController extends AbstractController
     
         return $this->render('pages/edit.html.twig', [
             'armoire' => $armoire,
+            'expiredBandes' => $expiredBandes,
             'form' => $form->createView(),
         ]);
     }
@@ -268,7 +355,7 @@ public function deleteBande(Request $request): Response
     $Bande = $entityManager->getRepository(Bandes::class)->find($id);
     $entityManager->remove($Bande);
     $entityManager->flush();
-    return $this->redirectToRoute('tableau');
+    return $this->redirectToRoute('listBandes');
 }
 public function editBande(Request $request, int $id): Response
 {
@@ -287,11 +374,36 @@ public function editBande(Request $request, int $id): Response
 
         $this->addFlash('success', 'La bande a été modifiée avec succès.');
 
-        return $this->redirectToRoute('tableau'); // Redirige où vous voulez
+        return $this->redirectToRoute('listBandes'); // Redirige où vous voulez
     }
 
     return $this->render('pages/ajouterBandes.html.twig', [
         'form' => $form->createView(),
     ]);
 }
+
+
+
+public function cal(BandesRepository $Banderep)
+{
+    $events = $Banderep->findAll();
+
+    $rdvs = [];
+
+    foreach ($events as $event) {
+        $rdvs[] = [
+            'id' => $event->getId(),
+            'start' => $event->getDatefin()->format('Y-m-d'),
+            'end' => $event->getDatefin()->format('Y-m-d '),
+            'title' => $event->getNumbande(),
+        ];
+    }
+
+ 
+
+    $data = json_encode($rdvs);
+
+    return $this->render('pages/cal.html.twig', compact('data'));
+}
+
 }

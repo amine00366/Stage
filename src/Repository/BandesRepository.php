@@ -63,5 +63,33 @@ public function isBandeExpired(Bandes $bande): bool
     return $yearsDifference >= (int) $bande->getDureederetension();
 
 }
+public function countBandes(): int
+{
+    return $this->createQueryBuilder('u')
+        ->select('COUNT(u.id)')
+        ->getQuery()
+        ->getSingleScalarResult();
+}
+public function countExpiredBandes(): int
+{
+    $expiredBandes = $this->createQueryBuilder('b')
+        ->select('COUNT(b.id)')
+        ->andWhere('b.isBandeExpired(b) = :expired')
+        ->setParameter('expired', true)
+        ->getQuery()
+        ->getSingleScalarResult();
+
+    return $expiredBandes;
+}
+public function getBandsEnteredPerDay(): array
+{
+    $query = $this->createQueryBuilder('b')
+        ->select('b.datefin AS day, COUNT(b.id) AS count')
+        ->groupBy('day')
+        ->getQuery();
+
+    return $query->getResult();
+}
+
 
 }

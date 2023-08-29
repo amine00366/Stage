@@ -70,10 +70,12 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
   <title>
     Stage BIAT
   </title>
+  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css\" integrity=\"sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=\" crossorigin=\"anonymous\">
+
   ";
-        // line 26
+        // line 28
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 43
+        // line 45
         echo "</head>
 
 <body class=\"g-sidenav-show  bg-gray-200\">
@@ -98,26 +100,29 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
           </a>
         </li>
         <li class=\"nav-item\">
-          <a class=\"nav-link text-white \" href=\"../pages/tables.html\">
+          <a class=\"nav-link text-white \" href=\"";
+        // line 69
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("tableau");
+        echo "\">
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
               <i class=\"material-icons opacity-10\">table_view</i>
             </div>
             ";
-        // line 71
+        // line 73
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
-            // line 72
+            // line 74
             echo "      <span class=\"nav-link-text ms-1\">Table des Armoires</span>
 ";
         }
-        // line 74
+        // line 76
         echo "
           
           </a>
         </li>
         <li class=\"nav-item\">
           <a class=\"nav-link text-white \" href=\"";
-        // line 79
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("tableau");
+        // line 81
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("listBandes");
         echo "\">
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
               <i class=\"material-icons opacity-10\">receipt_long</i>
@@ -153,29 +158,15 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
             <span class=\"nav-link-text ms-1\">Profile</span>
           </a>
         </li>
-        <li class=\"nav-item\">
-          <a class=\"nav-link text-white \" href=\"../pages/sign-in.html\">
-            <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
-              <i class=\"material-icons opacity-10\">login</i>
-            </div>
-            <span class=\"nav-link-text ms-1\">Sign In</span>
-          </a>
-        </li>
-        <li class=\"nav-item\">
-          <a class=\"nav-link text-white \" href=\"../pages/sign-up.html\">
-            <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
-              <i class=\"material-icons opacity-10\">assignment</i>
-            </div>
-            <span class=\"nav-link-text ms-1\">Sign Up</span>
-          </a>
-        </li>
-      </ul>
+        ";
+        // line 132
+        echo "      </ul>
     </div>
     <div class=\"sidenav-footer position-absolute w-100 bottom-0 \">
       <div class=\"mx-3\">
       <!-- lezem n7ot feha bouton sign out !--> 
         <a class=\"btn bg-gradient-primary w-100\" href=\"";
-        // line 135
+        // line 137
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
         echo "\" type=\"button\">Sign out </a>
       </div>
@@ -186,11 +177,8 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
     <nav class=\"navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl\" id=\"navbarBlur\" data-scroll=\"true\">
       <div class=\"container-fluid py-1 px-3\">
         <nav aria-label=\"breadcrumb\">
-          <ol class=\"breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5\">
-            <li class=\"breadcrumb-item text-sm\"><a class=\"opacity-5 text-dark\" href=\"javascript:;\">Pages</a></li>
-            <li class=\"breadcrumb-item text-sm text-dark active\" aria-current=\"page\">Dashboard</li>
-          </ol>
-          <h6 class=\"font-weight-bolder mb-0\">Dashboard</h6>
+         
+         
         </nav>
         <div class=\"collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4\" id=\"navbar\">
           <div class=\"ms-md-auto pe-md-3 d-flex align-items-center\">
@@ -202,11 +190,11 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
           <ul class=\"navbar-nav  justify-content-end\">
             <li class=\"nav-item d-flex align-items-center\">
             ";
-        // line 160
+        // line 159
         echo "            </li>
             <li class=\"mt-2\">
               ";
-        // line 163
+        // line 162
         echo "            </li>
             <li class=\"nav-item d-xl-none ps-3 d-flex align-items-center\">
               <a href=\"javascript:;\" class=\"nav-link text-body p-0\" id=\"iconNavbarSidenav\">
@@ -222,79 +210,28 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
                 <i class=\"fa fa-cog fixed-plugin-button-nav cursor-pointer\"></i>
               </a>
             </li>
-          <li class=\"nav-item dropdown pe-2 d-flex align-items-center\">
-    <a href=\"javascript:;\" class=\"nav-link text-body p-0\" id=\"dropdownMenuButton\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
-        <i class=\"fa fa-bell cursor-pointer\"></i>
-        ";
-        // line 181
-        if ((twig_length_filter($this->env, (isset($context["expiredBandes"]) || array_key_exists("expiredBandes", $context) ? $context["expiredBandes"] : (function () { throw new RuntimeError('Variable "expiredBandes" does not exist.', 181, $this->source); })())) > 0)) {
-            // line 182
-            echo "            <span class=\"badge bg-danger\">";
-            echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["expiredBandes"]) || array_key_exists("expiredBandes", $context) ? $context["expiredBandes"] : (function () { throw new RuntimeError('Variable "expiredBandes" does not exist.', 182, $this->source); })())), "html", null, true);
-            echo "</span>
-        ";
-        }
-        // line 184
-        echo "    </a>
-    <ul class=\"dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4\" aria-labelledby=\"dropdownMenuButton\">
-        ";
-        // line 186
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["expiredBandes"]) || array_key_exists("expiredBandes", $context) ? $context["expiredBandes"] : (function () { throw new RuntimeError('Variable "expiredBandes" does not exist.', 186, $this->source); })()));
-        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 187
-            echo "            <li class=\"mb-2\">
-                <a class=\"dropdown-item border-radius-md\" href=\"javascript:;\">
-                    <div class=\"d-flex py-1\">
-                        
-                        <div class=\"d-flex flex-column justify-content-center\">
-                            <h6 class=\"text-sm font-weight-normal mb-1\">
-                            
-                                <span  class=\"font-weight-bold\">Bande expirée</span> ";
-            // line 194
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "numbande", [], "any", false, false, false, 194), "html", null, true);
-            echo "
-                            </h6>
-                            <p class=\"text-xs text-secondary mb-0\">
-                                <i class=\"fa fa-clock me-1\"></i>
-                                Expirée le ";
-            // line 198
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "datefin", [], "any", false, false, false, 198), "d/m/Y"), "html", null, true);
-            echo "
-                            </p>
-                          
-                        </div>
-                    </div>
-                </a>
-            </li>
-        ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 206
-        echo "    </ul>
-</li>
-
+          ";
+        // line 207
+        echo "
 
             </li>
             ";
-        // line 217
+        // line 216
         echo "          </ul>
         </div>
       </div>
     </nav>
      
     ";
-        // line 222
+        // line 221
         $this->displayBlock('Body', $context, $blocks);
-        // line 720
+        // line 719
         echo "
 
       ";
-        // line 722
+        // line 721
         $this->displayBlock('footer', $context, $blocks);
-        // line 725
+        // line 724
         echo "    </div>
    
   </main>
@@ -373,11 +310,12 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
     </div>
   </div>
   <!--   Core JS Files   -->
+   <script src=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js\" integrity=\"sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=\" crossorigin=\"anonymous\"></script>
 
    ";
         // line 804
         $this->displayBlock('js', $context, $blocks);
-        // line 1084
+        // line 1085
         echo "
 </body>
 
@@ -390,7 +328,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     }
 
-    // line 26
+    // line 28
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -400,16 +338,16 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 27
+        // line 29
         echo "  <!--     Fonts and icons     -->
   <link rel=\"stylesheet\" type=\"text/css\" href=\"https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700\" />
   <!-- Nucleo Icons -->
   <link href=\"";
-        // line 30
+        // line 32
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/css/nucleo-icons.css\" rel=\"stylesheet"), "html", null, true);
         echo "\" />
   <link href=\"";
-        // line 31
+        // line 33
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/css/nucleo-svg.css\" rel=\"stylesheet"), "html", null, true);
         echo "\" />
   <!-- Font Awesome Icons -->
@@ -418,7 +356,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
   <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons+Round\" rel=\"stylesheet\">
   <!-- CSS Files -->
   <link id=\"pagestyle\" href=\"";
-        // line 37
+        // line 39
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/css/material-dashboard.css?v=3.1.0"), "html", null, true);
         echo "\" rel=\"stylesheet\" />
   <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">
@@ -434,7 +372,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     }
 
-    // line 222
+    // line 221
     public function block_Body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -444,11 +382,11 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "Body"));
 
-        // line 223
+        // line 222
         echo "    <!-- End Navbar -->
 
     ";
-        // line 703
+        // line 702
         echo "<div class=\"modal fade\" id=\"ajouterModal\" tabindex=\"-1\" aria-labelledby=\"ajouterModalLabel\" aria-hidden=\"true\">
         <div class=\"modal-dialog\">
             <div class=\"modal-content\">
@@ -460,9 +398,9 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
                 </div>
                 <div class=\"modal-body\">
                     ";
-        // line 713
+        // line 712
         $this->displayBlock('modal_content', $context, $blocks);
-        // line 714
+        // line 713
         echo "                </div>
             </div>
         </div>
@@ -477,7 +415,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     }
 
-    // line 713
+    // line 712
     public function block_modal_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -495,7 +433,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     }
 
-    // line 722
+    // line 721
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -505,7 +443,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 723
+        // line 722
         echo "      
       ";
         
@@ -527,23 +465,25 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "js"));
 
         // line 805
-        echo "  <script src=";
+        echo "
+  <script src=";
+        // line 806
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/core/popper.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 806
+        // line 807
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/core/bootstrap.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 807
+        // line 808
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/plugins/perfect-scrollbar.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 808
+        // line 809
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/plugins/smooth-scrollbar.min.js"), "html", null, true);
         echo "></script>
   <script src=";
-        // line 809
+        // line 810
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("backend/assets/js/plugins/chartjs.min.js"), "html", null, true);
         echo "></script>
    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>
@@ -840,7 +780,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
 
     public function getDebugInfo()
     {
-        return array (  547 => 809,  543 => 808,  539 => 807,  535 => 806,  530 => 805,  520 => 804,  509 => 723,  499 => 722,  481 => 713,  466 => 714,  464 => 713,  452 => 703,  448 => 223,  438 => 222,  422 => 37,  413 => 31,  409 => 30,  404 => 27,  394 => 26,  381 => 1084,  379 => 804,  298 => 725,  296 => 722,  292 => 720,  290 => 222,  283 => 217,  276 => 206,  262 => 198,  255 => 194,  246 => 187,  242 => 186,  238 => 184,  232 => 182,  230 => 181,  210 => 163,  206 => 160,  179 => 135,  120 => 79,  113 => 74,  109 => 72,  107 => 71,  77 => 43,  75 => 26,  48 => 1,);
+        return array (  487 => 810,  483 => 809,  479 => 808,  475 => 807,  471 => 806,  468 => 805,  458 => 804,  447 => 722,  437 => 721,  419 => 712,  404 => 713,  402 => 712,  390 => 702,  386 => 222,  376 => 221,  360 => 39,  351 => 33,  347 => 32,  342 => 29,  332 => 28,  319 => 1085,  317 => 804,  235 => 724,  233 => 721,  229 => 719,  227 => 221,  220 => 216,  215 => 207,  198 => 162,  194 => 159,  170 => 137,  163 => 132,  125 => 81,  118 => 76,  114 => 74,  112 => 73,  105 => 69,  79 => 45,  77 => 28,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -870,6 +810,8 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
   <title>
     Stage BIAT
   </title>
+  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css\" integrity=\"sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=\" crossorigin=\"anonymous\">
+
   {% block stylesheets %}
   <!--     Fonts and icons     -->
   <link rel=\"stylesheet\" type=\"text/css\" href=\"https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700\" />
@@ -911,7 +853,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
           </a>
         </li>
         <li class=\"nav-item\">
-          <a class=\"nav-link text-white \" href=\"../pages/tables.html\">
+          <a class=\"nav-link text-white \" href=\"{{ path('tableau') }}\">
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
               <i class=\"material-icons opacity-10\">table_view</i>
             </div>
@@ -923,7 +865,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
           </a>
         </li>
         <li class=\"nav-item\">
-          <a class=\"nav-link text-white \" href=\"{{ path('tableau') }}\">
+          <a class=\"nav-link text-white \" href=\"{{ path('listBandes') }}\">
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
               <i class=\"material-icons opacity-10\">receipt_long</i>
             </div>
@@ -958,7 +900,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
             <span class=\"nav-link-text ms-1\">Profile</span>
           </a>
         </li>
-        <li class=\"nav-item\">
+        {# <li class=\"nav-item\">
           <a class=\"nav-link text-white \" href=\"../pages/sign-in.html\">
             <div class=\"text-white text-center me-2 d-flex align-items-center justify-content-center\">
               <i class=\"material-icons opacity-10\">login</i>
@@ -973,7 +915,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
             </div>
             <span class=\"nav-link-text ms-1\">Sign Up</span>
           </a>
-        </li>
+        </li> #}
       </ul>
     </div>
     <div class=\"sidenav-footer position-absolute w-100 bottom-0 \">
@@ -988,11 +930,8 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
     <nav class=\"navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl\" id=\"navbarBlur\" data-scroll=\"true\">
       <div class=\"container-fluid py-1 px-3\">
         <nav aria-label=\"breadcrumb\">
-          <ol class=\"breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5\">
-            <li class=\"breadcrumb-item text-sm\"><a class=\"opacity-5 text-dark\" href=\"javascript:;\">Pages</a></li>
-            <li class=\"breadcrumb-item text-sm text-dark active\" aria-current=\"page\">Dashboard</li>
-          </ol>
-          <h6 class=\"font-weight-bolder mb-0\">Dashboard</h6>
+         
+         
         </nav>
         <div class=\"collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4\" id=\"navbar\">
           <div class=\"ms-md-auto pe-md-3 d-flex align-items-center\">
@@ -1022,7 +961,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
                 <i class=\"fa fa-cog fixed-plugin-button-nav cursor-pointer\"></i>
               </a>
             </li>
-          <li class=\"nav-item dropdown pe-2 d-flex align-items-center\">
+          {# <li class=\"nav-item dropdown pe-2 d-flex align-items-center\">
     <a href=\"javascript:;\" class=\"nav-link text-body p-0\" id=\"dropdownMenuButton\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
         <i class=\"fa fa-bell cursor-pointer\"></i>
         {% if expiredBandes|length > 0 %}
@@ -1051,7 +990,7 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
             </li>
         {% endfor %}
     </ul>
-</li>
+</li> #}
 
 
             </li>
@@ -1647,8 +1586,10 @@ class __TwigTemplate_115baf5c53efdd37b589f2fa11d5c6b0 extends Template
     </div>
   </div>
   <!--   Core JS Files   -->
+   <script src=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js\" integrity=\"sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=\" crossorigin=\"anonymous\"></script>
 
    {% block js  %}
+
   <script src={{asset(\"backend/assets/js/core/popper.min.js\")}}></script>
   <script src={{asset(\"backend/assets/js/core/bootstrap.min.js\")}}></script>
   <script src={{asset(\"backend/assets/js/plugins/perfect-scrollbar.min.js\")}}></script>

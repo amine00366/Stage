@@ -45,4 +45,22 @@ class UserRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+
+public function countUsers(): int
+{
+    return $this->createQueryBuilder('u')
+        ->select('COUNT(u.id)')
+        ->getQuery()
+        ->getSingleScalarResult();
+}
+public function countAdminUsers(): int
+{
+    return $this->createQueryBuilder('u')
+        ->select('COUNT(u.id)')
+        ->andWhere('u.role LIKE :role')
+        ->setParameter('role', '%ROLE_ADMIN%')
+        ->getQuery()
+        ->getSingleScalarResult();
+}
 }

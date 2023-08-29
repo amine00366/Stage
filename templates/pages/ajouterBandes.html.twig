@@ -5,27 +5,48 @@
 {% block title %}Ajouter une bande{% endblock %}
 
 {% block Body %}
-    <h1>Liste des bandes</h1>
-
-    <a href="#" data-toggle="modal" data-target="#ajouterModal" class="btn btn-gd btn-outline-info">Ajouter une bande</a>
-
-    <!-- Modal pour ajouter une bande -->
-    <div class="modal fade" id="ajouterModal" tabindex="-1" aria-labelledby="ajouterModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ajouterModalLabel">Ajouter une bande</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Ajouter une bande</h3>
                 </div>
-                <div class="modal-body">
+                <div class="card-body">
                     {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                    <div class="form-group">
+                        {{ form_label(form.numbande) }}
+                        {{ form_widget(form.numbande, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.Label) }}
+                        {{ form_widget(form.Label, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.datedebut) }}
+                        {{ form_widget(form.datedebut, {'attr': {'class': 'form-control datetimepicker-input'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.datefin) }}
+                        {{ form_widget(form.datefin, {'attr': {'class': 'form-control datetimepicker-input'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.dureederetension) }}
+                        {{ form_widget(form.dureederetension, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.pool) }}
+                        {{ form_widget(form.pool, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.arm) }}
+                        {{ form_widget(form.arm, {'attr': {'class': 'form-control', 'data-toggle': 'dropdown'}}) }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Valider</button>
                     {{ form_end(form) }}
                 </div>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}

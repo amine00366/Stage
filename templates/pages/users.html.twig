@@ -1,0 +1,77 @@
+{% extends 'admin.html.twig' %}
+
+{% block Body %}
+<div class="container-fluid py-4">
+<a href="{{ path('register') }}"><button type="button" class="btn btn-gd btn-outline-info">ajouter un utilisateur</button></a>      <div class="row">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">table Des Utilisateurs</h6>
+              </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                     
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom </th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Prenom</th>
+                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
+
+
+                       <th class="text-secondary opacity-7 text-right">Actions</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for a in users %}
+                    <tr>
+                      <td>
+                       
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">{{a.nom}}</h6>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">{{a.prenom}}</p>
+                    
+                       
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">{{a.email}}</p>
+                    
+                       
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">{{a.Role}}</p>
+                    
+                       
+                      </td>
+                      <td class="text-right"> <!-- Alignement à droite pour les icônes -->
+        <div class="d-flex justify-content-end"> <!-- Alignement à droite pour les icônes -->
+          <a href="{{ path('deleteUser', {'id': a.id}) }}" class="btn btn-sm btn-outline-danger me-2">
+            <i class="fas fa-trash-alt"></i>
+          </a>
+          <a href="{{ path('editUser', {'id': a.id}) }}" class="btn btn-sm btn-outline-info">
+            <i class="fas fa-pencil-alt"></i>
+          </a>
+    </div>
+      </td>
+                        </tr>
+                     
+                      {% endfor %} 
+                   
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+{% endblock %}

@@ -36,6 +36,35 @@ register:
     methods: [GET, POST]
 
 
+
+deleteUser:
+    path: /deleteUser/{id}
+    controller: App\Controller\RegistrationController::deleteUser
+    methods: [GET, POST]
+
+dashboard:
+    path: /dashboard
+    controller: App\Controller\PagesController::dashboard
+    methods: [GET, POST]
+
+
+
+cal:
+    path: /cal
+    controller: App\Controller\PagesController::cal
+    methods: [GET, POST]
+
+countUsers:
+    path: /countUsers
+    controller: App\Controller\PagesController::countUsers
+    methods: [GET, POST]
+
+
+editUser:
+    path: /editUser/{id}
+    controller: App\Controller\RegistrationController::editUser
+    methods: [GET, POST]
+
 app_logout:
     path: /logout
     controller: App\Controller\SecurityController::logout 
@@ -56,6 +85,10 @@ listBandes:
     controller: App\Controller\PagesController::listBandes 
     methods: [GET, POST]
 
+users:
+    path: /users
+    controller: App\Controller\RegistrationController::users 
+    methods: [GET, POST]
 
 index:
     path: /admin
@@ -84,7 +117,9 @@ ajoutArmoire:
 deleteArmoire:
     path: /deleteArmoire/{id}
     controller: App\Controller\PagesController::deleteArmoire
-    
+
+
+
 
 
 deleteBande:

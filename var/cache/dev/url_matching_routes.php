@@ -19,10 +19,14 @@ return [
         '/logintemp' => [[['_route' => 'logintemplate', '_controller' => 'App\\Controller\\PagesController::logintemp'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/searchBande' => [[['_route' => 'searchBande', '_controller' => 'App\\Controller\\PagesController::searchBande'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/register' => [[['_route' => 'register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/dashboard' => [[['_route' => 'dashboard', '_controller' => 'App\\Controller\\PagesController::dashboard'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/cal' => [[['_route' => 'cal', '_controller' => 'App\\Controller\\PagesController::cal'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/countUsers' => [[['_route' => 'countUsers', '_controller' => 'App\\Controller\\PagesController::countUsers'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/addBandes' => [[['_route' => 'AddBandes', '_controller' => 'App\\Controller\\PagesController::ajouterBande'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/BandeExpire' => [[['_route' => 'BandeExpire', '_controller' => 'App\\Controller\\PagesController::BandeExpire'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/listBandes' => [[['_route' => 'listBandes', '_controller' => 'App\\Controller\\PagesController::listBandes'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/users' => [[['_route' => 'users', '_controller' => 'App\\Controller\\RegistrationController::users'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/admin' => [[['_route' => 'index', '_controller' => 'App\\Controller\\PagesController::index'], null, null, null, false, false, null]],
         '/aa' => [[['_route' => 'tableau', '_controller' => 'App\\Controller\\PagesController::listarmoire'], null, null, null, false, false, null]],
         '/addArmoire' => [[['_route' => 'ajoutArmoire', '_controller' => 'App\\Controller\\PagesController::new'], null, null, null, false, false, null]],
@@ -44,13 +48,15 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/edit(?'
-                    .'|Armoire/([^/]++)(*:193)'
-                    .'|Bande/([^/]++)(*:215)'
-                .')'
                 .'|/delete(?'
-                    .'|Armoire/([^/]++)(*:250)'
-                    .'|Bande/([^/]++)(*:272)'
+                    .'|User/([^/]++)(*:192)'
+                    .'|Armoire/([^/]++)(*:216)'
+                    .'|Bande/([^/]++)(*:238)'
+                .')'
+                .'|/edit(?'
+                    .'|User/([^/]++)(*:268)'
+                    .'|Armoire/([^/]++)(*:292)'
+                    .'|Bande/([^/]++)(*:314)'
                 .')'
             .')/?$}sDu',
     ],
@@ -62,11 +68,13 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        193 => [[['_route' => 'editArmoire', '_controller' => 'App\\Controller\\PagesController::editArmoire'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
-        215 => [[['_route' => 'editBande', '_controller' => 'App\\Controller\\PagesController::editBande'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
-        250 => [[['_route' => 'deleteArmoire', '_controller' => 'App\\Controller\\PagesController::deleteArmoire'], ['id'], null, null, false, true, null]],
-        272 => [
-            [['_route' => 'deleteBande', '_controller' => 'App\\Controller\\PagesController::deleteBande'], ['id'], null, null, false, true, null],
+        192 => [[['_route' => 'deleteUser', '_controller' => 'App\\Controller\\RegistrationController::deleteUser'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        216 => [[['_route' => 'deleteArmoire', '_controller' => 'App\\Controller\\PagesController::deleteArmoire'], ['id'], null, null, false, true, null]],
+        238 => [[['_route' => 'deleteBande', '_controller' => 'App\\Controller\\PagesController::deleteBande'], ['id'], null, null, false, true, null]],
+        268 => [[['_route' => 'editUser', '_controller' => 'App\\Controller\\RegistrationController::editUser'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        292 => [[['_route' => 'editArmoire', '_controller' => 'App\\Controller\\PagesController::editArmoire'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        314 => [
+            [['_route' => 'editBande', '_controller' => 'App\\Controller\\PagesController::editBande'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],
